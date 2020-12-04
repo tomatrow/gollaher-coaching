@@ -1,0 +1,8 @@
+.env
+.caching-prettier-cache
+log.md
+build/
+*.map
+scripts/bundle.js
+styles/bundle.css
+node_modules/

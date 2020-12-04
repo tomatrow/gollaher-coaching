@@ -1,0 +1,9 @@
+{
+  "actions" : {
+    "run" : {
+      "enabled" : true,
+      "script" : "#!\/usr\/local\/bin\/fish\n.\/utility\/caching-prettier.mjs .\/src\/*.{js,svelte} .\/src\/**\/*.svelte .\/*.js"
+    }
+  },
+  "identifier" : "11F00D06-1681-4A47-A7D2-41B99E20A079"
+}

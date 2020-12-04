@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1">
+    {squarespace-headers}
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body id="{squarespace.page-id}" class="{squarespace.page-classes}">
+      <script>window.svelteSpace = {}</script>
+      <squarespace:navigation navigationId="primaryNav" template="primary-navigation" />
+      <squarespace:navigation navigationId="secondaryNav" template="secondary-navigation" />
+      {squarespace.main-content}
+      <div id="app"></div>
+      <script type="text/javascript" src="/scripts/bundle.js"></script>
+      {squarespace-footers}
+  </body>
+</html> 
