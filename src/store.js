@@ -11,15 +11,15 @@ function getPath(data) {
 }
 export const path = derived(page, getPath)
 
+// set the active page in the navigations
 page.subscribe($page => {
-    // set the active page
+    const path = getPath($page)
     const updateNavigation = value => {
-        for (let i = 0; i < value.items.length; i++)
-            value.items[i].active = value.items[i].externalLink.url === getPath($page)
+        for (let item of value.items) item.active = item.externalLink.url === path
+        return value
     }
-    console.log($page)
-    // primaryNavigation.update(updateNavigation)
-    // secondaryNavigation.update(updateNavigation)
+    primaryNavigation.update(updateNavigation)
+    secondaryNavigation.update(updateNavigation)
 })
 
 export function load(path, force = false) {
