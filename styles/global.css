@@ -83,3 +83,9 @@
 .text-a { color: #25448d; }
 .text-b { color: black; }
 .text-c { color: #ff00ba; }
+
+
+.font-primary { font-family: "Roboto"; }
+.font-secondary { font-family: "Source Sans Pro"; }
+.font-bauhaus { font-family: "Bauhaus 93"; }
+.font-lazer { font-family: "Lazer84"; }

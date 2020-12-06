@@ -2,34 +2,24 @@
     import { page, secondaryNavigation } from "../store.js"
     import Navigation from "./Navigation.svelte"
     import Link from "./Link.svelte"
+    import Logo from "./Logo.svelte"
 
     $: number = $page.websiteSettings.contactPhoneNumber
     $: email = $page.websiteSettings.contactEmail
     $: socials = $page.website.socialAccounts.filter(service =>
         ["instagram-unauth", "facebook-unauth", "youtube-unauth"].includes(service.serviceName)
     )
-    $: website = $page.website
 </script>
 
-<style>
-    footer {
-        font-family: "Source Sans Pro";
-    }
-</style>
-
 <footer
-    class="bg-b text-white flex flex-col space-y-8 p-4 md:p-16 md:justify-around md:flex-row md:p-10 ">
+    class="bg-b text-white font-secondary flex flex-col space-y-8 p-4 md:p-16 md:justify-around md:flex-row md:p-10 ">
     <div class="flex flex-col items-center space-y-8">
-        <Link href="/">
-            <div class="sm:relative" href="/">
-                <img
-                    class="w-full max-w-sm sm:w-80 sm:max-w-none"
-                    src={website.logoImageUrl}
-                    alt={website.siteTitle} />
+        <div class="relative w-full max-w-sm sm:w-80 sm:max-w-none">
+            <Logo>
                 <span
-                    class="hidden font-bold sm:block sm:absolute sm:bottom-0 sm:left-0 sm:mb-4">{website.siteTagLine}</span>
-            </div>
-        </Link>
+                    class="hidden text-white font-secondary font-bold sm:block sm:absolute sm:bottom-0 sm:left-0 sm:mb-4">{$page.website.siteTagLine}</span>
+            </Logo>
+        </div>
         <div class="flex flex-col items-center space-y-1">
             <span class="font-bold">Subscribe to get the latest news from us</span>
             <div class="flex">
