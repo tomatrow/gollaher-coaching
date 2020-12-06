@@ -1,5 +1,5 @@
 <script>
-    import { navigate } from "../singularity/location.js"
+    import { navigate } from "../router/location.js"
     export let href
 </script>
 

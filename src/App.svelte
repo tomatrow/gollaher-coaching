@@ -1,7 +1,7 @@
 <script>
+    import Header from "./components/Header.svelte"
+    import Footer from "./components/Header.svelte"
     import Main from "./components/Main.svelte"
-    export let svelteSpace
-    console.log(svelteSpace)
 </script>
 
 <style global lang="postcss">
@@ -17,4 +17,6 @@
     /* @tailwind utilities; */
 </style>
 
-<Main {...svelteSpace} />
+<Header />
+<Main />
+<Footer />

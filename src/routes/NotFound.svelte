@@ -1,5 +1,5 @@
 <script>
-    import location from "../singularity/location.js"
+    import location from "../router/location.js"
     import Link from "../components/Link.svelte"
     export let router
 </script>

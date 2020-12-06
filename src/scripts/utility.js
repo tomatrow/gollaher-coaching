@@ -1,5 +1,3 @@
-import { navigate } from "../singularity/location.js"
-
 export async function loadPage(path) {
     if (path === undefined) throw new Error('path is undefined')
 

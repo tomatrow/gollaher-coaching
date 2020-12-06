@@ -1,10 +1,9 @@
 <script>
-    import { loadPage } from "../scripts/utility.js"
+    import { path } from "../store.js"
+    import CollectionPage from "../components/CollectionPage.svelte"
     export let router
 </script>
 
-{#await loadPage(router.path)}
-    <p>...waiting</p>
-{:then page}
-    {#each page.items as item}{item.title}{/each}
-{/await}
+{#if $path === router.path}
+    <CollectionPage />
+{:else}waiting...{/if}

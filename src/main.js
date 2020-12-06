@@ -1,8 +1,5 @@
 import App from "./App.svelte"
 
 export default new App({
-    target: document.querySelector("#app"),
-    props: {
-        svelteSpace
-    }
+    target: document.querySelector("#app")
 })

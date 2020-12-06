@@ -1,10 +1,10 @@
 <script>
-    import { noMatch, navigate } from "../singularity/location.js"
-
-    import Link from "./Link.svelte"
-    import Navigation from "./Navigation.svelte"
-    import Route from "../singularity/Route.svelte"
-
+    // stores
+    import { primaryNavigation, page, secondaryNavigation, load } from "../store.js"
+    // routing
+    import location, { noMatch, navigate } from "../router/location.js"
+    import Route from "../router/Route.svelte"
+    // routes
     import Home from "../routes/Home.svelte"
     import About from "../routes/About.svelte"
     import Contact from "../routes/Contact.svelte"
@@ -16,17 +16,14 @@
     import LessonList from "../routes/LessonList.svelte"
     import NotFound from "../routes/NotFound.svelte"
 
-    export let primaryNavigation
-    export let secondaryNavigation
-    export let page
+    console.log(window.svelteSpace)
 
-    navigate((page.item || page.collection).fullUrl)
+    location.subscribe(value => load(value))
 </script>
 
 <main class="text-center p-4 mx-0 my-auto">
-    <Navigation items={primaryNavigation.items} />
     <Route path="/" component={Home} />
-    <Route path="/about" component={About} />
+    <Route path="/about-me" component={About} />
     <Route path="/contact" component={Contact} />
     <Route path="/packages" component={PackageList} />
     <Route path="/services" component={ServiceList} />
@@ -38,5 +35,4 @@
     {#if $noMatch}
         <NotFound />
     {/if}
-    <Navigation items={secondaryNavigation.items} />
 </main>

@@ -1,16 +1,9 @@
 <script>
-    import Link from "../components/Link.svelte"
-    import { loadPage } from "../scripts/utility.js"
+    import { path } from "../store.js"
+    import CollectionPage from "../components/CollectionPage.svelte"
     export let router
 </script>
 
-{#await loadPage('/blog')}
-    <p>...waiting</p>
-{:then page}
-    {#each page.items as item}
-        <Link href={item.fullUrl}>{item.title}</Link>
-    {/each}
-{:catch error}
-    {@debug error}
-    <p style="color: red;">Error: {error.message}</p>
-{/await}
+{#if $path === router.path}
+    <CollectionPage />
+{:else}waiting....{/if}
