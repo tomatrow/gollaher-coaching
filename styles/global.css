@@ -75,3 +75,11 @@
   font-display: swap;
   src: url(/assets/font_source_sans_pro_bold.ttf) format('truetype');
 }
+
+.bg-a { background-color: #25448d; }
+.bg-b { background-color: black; }
+.bg-c { background-color: #ff00ba; }
+
+.text-a { color: #25448d; }
+.text-b { color: black; }
+.text-c { color: #ff00ba; }

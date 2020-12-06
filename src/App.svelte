@@ -15,6 +15,10 @@
     /* @tailwind components; */
     /* purgecss end ignore */
     /* @tailwind utilities; */
+
+    :global(body) {
+        font-family: Roboto;
+    }
 </style>
 
 <Header />
