@@ -4,7 +4,7 @@
     $: website = $page.website
 </script>
 
-<Link href="/">
-    <img class="mx-auto" src={website.logoImageUrl} alt={website.siteTitle} />
+<div {...$$props}>
+    <Link href="/"><img class="mx-auto" src={website.logoImageUrl} alt={website.siteTitle} /></Link>
     <slot />
-</Link>
+</div>
