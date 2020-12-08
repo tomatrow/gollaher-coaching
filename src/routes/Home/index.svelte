@@ -1,28 +1,28 @@
 <script>
-    import { path, page } from "../../store.js"
+    import { load } from "../../store.js"
     import Rule from "../../components/Rule.svelte"
     import ServicesBar from "./ServicesBar.svelte"
-    import { onDestroy } from "svelte"
 
     export let router
 
-    $: services = $page.collection?.collections?.find(
-        collection => collection.fullUrl == "/services"
-    )
+    const getCollections = load(router.path).then(page => {
+        const findCollection = path =>
+            page.collection?.collections?.find(collection => collection.fullUrl == path)
 
-    const unsubscribe = page.subscribe(value => {
-        console.log("Home Page data:", value.collection.title)
+        return {
+            services: findCollection("/services")
+        }
     })
-
-    onDestroy(unsubscribe)
 </script>
 
-{@debug $path}
-{@debug $page}
-{#if $path === router.path}
-    {#if services}
+{#await getCollections}
+    <p>...waiting</p>
+{:then collections}
+    {#if collections.services}
         <Rule />
-        <ServicesBar collection={services} />
+        <ServicesBar collection={collections.services} />
         <Rule />
     {/if}
-{:else}waiting...{/if}
+{:catch error}
+    <p style="color: red">{error}</p>
+{/await}

@@ -1,41 +1,28 @@
-import { writable, get, derived } from "svelte/store"
+import { writable } from "svelte/store"
+import location from "./location.js"
 
 // straight up sqs stuff. I'm going to use their structure.
 export const primaryNavigation = writable(window.svelteSpace.primaryNavigation)
 export const page = writable(window.svelteSpace.page)
 export const secondaryNavigation = writable(window.svelteSpace.secondaryNavigation)
 
-function getPath(data) {
-    data = data || get(page)
-    return (data.item || data.collection).fullUrl
-}
-export const path = derived(page, getPath)
-
-// set the active page in the navigations
-page.subscribe($page => {
-    const path = getPath($page)
-    const updateNavigation = value => {
-        for (let item of value.items) item.active = item.externalLink.url === path
-        return value
-    }
-    primaryNavigation.update(updateNavigation)
-    secondaryNavigation.update(updateNavigation)
+// update the navigation objects for the new active page.
+location.subscribe($location => {
+    for (let navigation of [primaryNavigation, secondaryNavigation])
+        navigation.update(value => {
+            for (let item of value.items) item.active = item.externalLink.url === $location
+            return value
+        })
 })
 
-export function load(path, force = false) {
-    if (path === getPath() && !force) {
-        console.warn(`Already loaded ${path}`)
-        return Promise.resolve(get(page))
-    }
+// load data for an sqs page
+export async function load(path) {
+    const response = await fetch(`${path}?format=json`)
+    const data = await response.json()
 
-    return fetch(`${path}?format=json`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) throw new Error(`Error loading path: "${path}"`)
-            return data
-        })
-}
+    if (data.error) throw new Error(`Error loading path: "${path}"`)
 
-export function reload() {
-    return load(getPath(), true)
+    console.log(`Loaded data for path: ${path}`, data)
+    page.set(data)
+    return data
 }

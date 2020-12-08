@@ -5,6 +5,6 @@
 
 {#each items as { active, externalLink }}
     <Link href={externalLink.url}>
-        <span class="uppercase {active ? 'text-c' : 'text-white'}">{externalLink.title}</span>
+        <span class="{active ? 'text-c' : 'text-white'} uppercase">{externalLink.title}</span>
     </Link>
 {/each}

@@ -1,9 +1,15 @@
 <script>
-    import { path } from "../store.js"
-    import ItemPage from "../components/ItemPage.svelte"
+    import { load } from "../store.js"
     export let router
 </script>
 
-{#if $path === router.path}
-    <ItemPage />
-{:else}loading...{/if}
+{#await load(router.path).then(page => page.item)}
+    <p>...waiting</p>
+{:then item}
+    <h1>{item.title}</h1>
+    <div>
+        {@html item.body}
+    </div>
+{:catch error}
+    <p style="color: red">{error}</p>
+{/await}

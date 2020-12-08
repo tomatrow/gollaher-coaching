@@ -4,6 +4,7 @@ import resolve from "@rollup/plugin-node-resolve"
 import css from "rollup-plugin-css-only"
 import fs from "fs"
 import sveltePreprocess from "svelte-preprocess"
+import format from "./format.js"
 
 const production = !process.env.ROLLUP_WATCH
 
@@ -16,6 +17,7 @@ export default {
         file: "scripts/bundle.js"
     },
     plugins: [
+        format({ exclude: ["node_modules/**", "**/*.css"] }), // from zen
         svelte({
             compilerOptions: {
                 // enable run-time checks when not in production

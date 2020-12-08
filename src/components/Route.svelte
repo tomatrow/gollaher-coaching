@@ -1,6 +1,6 @@
 <script>
     import UrlPattern from "url-pattern"
-    import location, { navigate, noMatch } from "./location.js"
+    import location, { navigate, noMatch } from "../location.js"
     export let path
     export let component = undefined
     export let redirect = undefined

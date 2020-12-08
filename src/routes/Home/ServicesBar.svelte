@@ -6,9 +6,9 @@
 <style>
     .bg-terrain {
         background-image: url(/assets/bg_angled_terrain.png);
-        background-repeat: no-repeat;
         background-position: bottom;
         background-size: cover;
+        background-repeat: no-repeat;
     }
 </style>
 

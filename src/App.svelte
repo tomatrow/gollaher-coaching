@@ -1,7 +1,11 @@
 <script>
-    import Header from "./components/Header.svelte"
-    import Footer from "./components/Footer.svelte"
-    import Main from "./components/Main.svelte"
+    import location from "./location.js"
+
+    import Header from "./app/Header.svelte"
+    import Footer from "./app/Footer.svelte"
+    import Main from "./app/Main.svelte"
+
+    console.log(window.svelteSpace)
 </script>
 
 <style global lang="postcss">

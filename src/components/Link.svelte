@@ -1,5 +1,5 @@
 <script>
-    import { navigate } from "../router/location.js"
+    import { navigate } from "../location.js"
     export let href
 </script>
 
