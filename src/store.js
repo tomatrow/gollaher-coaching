@@ -23,19 +23,16 @@ page.subscribe($page => {
 })
 
 export function load(path, force = false) {
-    if (path === getPath() && !force) return
+    if (path === getPath() && !force) {
+        console.warn(`Already loaded ${path}`)
+        return Promise.resolve(get(page))
+    }
 
     return fetch(`${path}?format=json`)
         .then(response => response.json())
         .then(data => {
-            if (data.error && path != "/not-found") {
-                console.error(`Error loading path '${path}'`, data.error)
-                load("/not-found")
-                return
-            }
-
-            // set the new page data
-            page.set(data)
+            if (data.error) throw new Error(`Error loading path: "${path}"`)
+            return data
         })
 }
 

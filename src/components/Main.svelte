@@ -1,11 +1,12 @@
 <script>
+    import { onDestroy } from "svelte"
     // stores
     import { primaryNavigation, page, secondaryNavigation, load } from "../store.js"
     // routing
     import location, { noMatch, navigate } from "../router/location.js"
     import Route from "../router/Route.svelte"
     // routes
-    import Home from "../routes/Home.svelte"
+    import Home from "../routes/Home/index.svelte"
     import About from "../routes/About.svelte"
     import Contact from "../routes/Contact.svelte"
     import BlogList from "../routes/BlogList.svelte"
@@ -18,10 +19,20 @@
 
     console.log(window.svelteSpace)
 
-    location.subscribe(value => load(value))
+    const unsubscribe = location.subscribe(value => {
+        console.log(`Loading: "${value}"`)
+        load(value)
+            .then(data => {
+                console.log(`Loaded: "${value}"`, data)
+                page.set(data)
+            })
+            .catch(error => console.error(`Error Loading: "${value}"`, error))
+    })
+
+    onDestroy(unsubscribe)
 </script>
 
-<main class="text-center p-4 mx-0 my-auto">
+<main>
     <Route path="/" component={Home} />
     <Route path="/about-me" component={About} />
     <Route path="/contact" component={Contact} />

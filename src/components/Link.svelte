@@ -4,6 +4,6 @@
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
-<a {...$$props} on:click|preventDefault={() => navigate(href)}>
+<a {...$$restProps} on:click|preventDefault={() => navigate(href)}>
     <slot />
 </a>

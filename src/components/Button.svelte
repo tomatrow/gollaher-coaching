@@ -9,6 +9,6 @@
     }
 </style>
 
-<button {...$$props}>
+<button {...$$restProps}>
     <slot />
 </button>
