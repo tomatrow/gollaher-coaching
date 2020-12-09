@@ -12,6 +12,7 @@
         "@fullhuman/postcss-purgecss": "^3.0.0",
         "@rollup/plugin-commonjs": "^17.0.0",
         "@rollup/plugin-node-resolve": "^11.0.0",
+        "carbon-components-svelte": "^0.25.1",
         "postcss-sorting": "^6.0.0",
         "prettier": "^2.2.1",
         "prettier-plugin-svelte": "^1.4.1",

@@ -3,6 +3,7 @@
     import Navigation from "../components/Navigation.svelte"
     import Link from "../components/Link.svelte"
     import Logo from "../components/Logo.svelte"
+    import Input from "../components/Input.svelte"
 
     $: number = $page.websiteSettings.contactPhoneNumber
     $: email = $page.websiteSettings.contactEmail
@@ -12,32 +13,32 @@
 </script>
 
 <footer
-    class="bg-b text-white font-secondary flex-col space-y-8 p-4 md:p-16 md:justify-around md:flex-row md:p-10 flex">
-    <div class="flex-col items-center space-y-8 flex">
-        <div class="relative w-full max-w-sm sm:w-80 sm:max-w-none">
+    class="bg-b font-secondary space-y-8 flex flex-col md:flex-row md:justify-around p-4 md:p-10 md:p-16 text-white">
+    <div class="space-y-8 flex items-center flex-col">
+        <div class="sm:w-80 sm:max-w-none relative max-w-sm w-full">
             <Logo>
                 <span
-                    class="hidden text-white font-secondary font-bold sm:block sm:absolute sm:bottom-0 sm:left-0 sm:mb-4">{$page.website.siteTagLine}</span>
+                    class="font-secondary sm:absolute sm:bottom-0 sm:left-0 hidden sm:block sm:mb-4 text-white font-bold">{$page.website.siteTagLine}</span>
             </Logo>
         </div>
-        <div class="flex-col items-center space-y-1 flex">
+        <div class="space-y-1 flex items-center flex-col">
             <span class="font-bold">Subscribe to get the latest news from us</span>
             <div class="flex">
-                <input class="py-2 px-0" type="email" placeholder=" Email" />
-                <button class="bg-a px-4 py-2">Subscribe</button>
+                <Input type="email" placeholder=" Email" />
+                <button class="bg-a py-2 px-4">Subscribe</button>
             </div>
         </div>
     </div>
-    <div class="justify-around md:space-x-8 flex">
-        <div class="flex-col flex">
+    <div class="md:space-x-8 flex justify-around">
+        <div class="flex flex-col">
             <h5 class="font-bold">Navigation</h5>
             <Navigation items={$secondaryNavigation.items} />
         </div>
-        <div class="flex-col flex">
+        <div class="flex flex-col">
             <h5 class="font-bold">Contact Us</h5>
             <a href="tel:{number}">{number}</a>
             <a href="mailto:{email}">{email}</a>
-            <div class="mt-auto p-2 space-x-2 justify-end flex">
+            <div class="space-x-2 flex justify-end mt-auto p-2">
                 {#each socials as { profileUrl, serviceName }}
                     <a href={profileUrl} target="_blank">{serviceName[0]}</a>
                 {/each}

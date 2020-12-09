@@ -3,16 +3,20 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="initial-scale=1">
-    {squarespace-headers}
+    <link href="/assets/bundle.css" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <squarespace:navigation navigationId="primaryNav" template="primary-navigation" />
+    <squarespace:navigation navigationId="secondaryNav" template="secondary-navigation" />
+    {squarespace.main-content}
+    <script defer type="text/javascript" src="/scripts/bundle.js"></script>
   </head>
-  <body id="{squarespace.page-id}" class="{squarespace.page-classes}">
-      <script>window.svelteSpace = {}</script>
-      <squarespace:navigation navigationId="primaryNav" template="primary-navigation" />
-      <squarespace:navigation navigationId="secondaryNav" template="secondary-navigation" />
-      {squarespace.main-content}
-      <div id="app"></div>
-      <script type="text/javascript" src="/scripts/bundle.js"></script>
+  <body>
+      <script>
+          // just to make sure the injected footer script doesn't throw 
+          const Y = null
+          const Squarespace = { afterBodyLoad(Y){} }
+      </script>
       {squarespace-footers}
+      <div id="app"/>
   </body>
 </html> 

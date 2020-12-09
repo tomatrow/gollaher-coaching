@@ -1,1 +1,1 @@
-<script>window.svelteSpace.primaryNavigation = {@|json}</script>
+<script id="primaryNavigation">[{@|json}]</script>

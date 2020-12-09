@@ -1,1 +1,1 @@
-<script>window.svelteSpace.page = {@|json}</script>
+<script id="page">[{@|json-pretty}]</script>

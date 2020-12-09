@@ -1,60 +1,42 @@
 <script>
-    import { primaryNavigation, page } from "../store.js"
+    import { primaryNavigation, page, settings } from "../store.js"
 
     import Navigation from "../components/Navigation.svelte"
     import Logo from "../components/Logo.svelte"
     import Link from "../components/Link.svelte"
     import Button from "../components/Button.svelte"
+    import ProfileBlurb from "../components/ProfileBlurb.svelte"
 
     $: isHome = $page.collection.fullUrl == "/"
-    $: content =
-        isHome &&
-        $page.collection?.collections
-            ?.find(collection => collection.fullUrl === "/index-copy")
-            ?.shift()?.customContent
 </script>
 
-<style>
-    header {
-        background-image: url(/assets/bg_the_grid.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-</style>
-
-<header class="font-bauhaus bg-b w-full py-4">
-    <div class="flex-col items-center flex">
+<header
+    class="font-bauhaus py-4 w-full bg-cover bg-no-repeat"
+    style="background-image: url(/assets/bg_the_grid.png)">
+    <div class="flex items-center flex-col">
         {#if isHome}
-            <Logo class="w-full p-8 mx-auto sm:w-4/5">
-                <Link href="/contact" class="flex-col items-center flex">
+            <Logo class="mx-auto p-8 w-full sm:w-4/5">
+                <Link href="/contact" class="flex items-center flex-col">
                     <Button>
-                        <span class="text-white font-bold font-secondary uppercase px-4 py-2">Book
+                        <span class="font-secondary py-2 px-4 text-white uppercase font-bold">Book
                             Now</span>
                     </Button>
                 </Link>
             </Logo>
         {/if}
-        <div class="p-4 justify-center items-center space-x-2 sm:mt-4 flex flex-wrap">
+        <div class="space-x-2 flex items-center flex-wrap justify-center sm:mt-4 p-4">
             <Navigation items={$primaryNavigation.items} />
             <Link href="/contact">
-                <Button><span class="px-4 py-2 uppercase text-white">Contact Us</span></Button>
+                <Button><span class="py-2 px-4 text-white uppercase">Contact Us</span></Button>
             </Link>
         </div>
-        {#if content}
-            <div class="flex-col items-center justify-center my-10 sm:flex-row sm:w-4/5 flex">
-                <Link href="/about" class="flex-grow-0 flex-shrink-0 sm:w-2/5">
-                    <img
-                        class="mx-auto h-auto w-4/5 sm:w-full"
-                        src="/assets/profile.png"
-                        alt={$page.website.siteTitle} />
-                </Link>
-                <div class="flex-col text-white flex">
-                    <h2 class="font-lazer p-4 sm:text-3xl">{content['heading-title']}</h2>
-                    <div class="font-secondary font-bold space-y-2 p-4">
-                        {@html content['heading-body'].html}
-                    </div>
-                </div>
-            </div>
+        {#if isHome}
+            <ProfileBlurb
+                title={$settings.home.headerProfileBlurb.title}
+                src={$settings.home.headerProfileBlurb.src}
+                alt={$settings.home.headerProfileBlurb.alt}>
+                {@html $settings.home.headerProfileBlurb.body}
+            </ProfileBlurb>
         {/if}
     </div>
 </header>

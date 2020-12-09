@@ -11,7 +11,7 @@ const production = !process.env.ROLLUP_WATCH
 export default {
     input: "src/main.js",
     output: {
-        sourcemap: !production,
+        sourcemap: false,
         format: "iife",
         name: "app",
         file: "scripts/bundle.js"
@@ -34,7 +34,7 @@ export default {
         // a separate file - better for performance
         css({
             output(styles) {
-                fs.writeFileSync("styles/bundle.css", styles)
+                fs.writeFileSync("assets/bundle.css", styles)
             }
         }),
 

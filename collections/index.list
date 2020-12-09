@@ -1,1 +1,9 @@
 {@|apply page.block}
+<script id="collections">
+[
+    {.repeated section collection.collections}
+        {@|json},
+    {.end}
+    null
+]
+</script>
