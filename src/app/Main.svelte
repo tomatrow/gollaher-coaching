@@ -2,6 +2,7 @@
     // routing
     import { noMatch } from "../location.js"
     import Route from "../components/Route.svelte"
+    import Rule from "../components/Rule.svelte"
     // routes
     import Home from "../routes/Home/index.svelte"
     import About from "../routes/About.svelte"
@@ -15,7 +16,8 @@
     import NotFound from "../routes/NotFound.svelte"
 </script>
 
-<main>
+<main class="flex flex-col justify-between">
+    <Rule />
     <Route path="/" component={Home} />
     <Route path="/about-me" component={About} />
     <Route path="/contact" component={Contact} />
@@ -29,4 +31,5 @@
     {#if $noMatch}
         <NotFound />
     {/if}
+    <Rule />
 </main>

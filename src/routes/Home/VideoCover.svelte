@@ -5,6 +5,9 @@
     export let date
     export let time
     export let href
+
+    let clazz = ""
+    export { clazz as class }
 </script>
 
 <style>
@@ -14,7 +17,7 @@
 </style>
 
 <div
-    class="w-60 relative flex items-center justify-center h-40 bg-cover bg-no-repeat text-sm"
+    class="{clazz} relative flex items-center justify-center bg-cover bg-no-repeat text-sm"
     style="color: #d1daff; background-image: url({src})">
     <div class="absolute bottom-0 left-0 p-3">
         <div>{time}</div>
@@ -35,7 +38,7 @@
     <div class="corner absolute top-0 right-0 m-1 w-8 h-8 border-t-2 border-r-2" />
     <div class="corner absolute right-0 bottom-0 m-1 w-8 h-8 border-r-2 border-b-2" />
 
-    <Link {href} class="play-btn w-1/2 h-auto">
+    <a {href} target="_blank" class="w-1/3 h-auto">
         <svg viewBox="0 0 100 100">
             <mask id="mask">
                 <!-- Everything under a white pixel will be visible -->
@@ -47,5 +50,5 @@
             <!-- with this mask applied, we "punch" a heart shape hole into the circle -->
             <circle cx="50" cy="50" r="50" mask="url(#mask)" fill="white" opacity="0.6" />
         </svg>
-    </Link>
+    </a>
 </div>

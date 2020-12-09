@@ -9,9 +9,11 @@
     <Title href={collection.href} title={collection.title} />
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {#each collection.items as { assetUrl, fullUrl, customContent }}
+            {@debug customContent}
             <VideoCover
+                class="h-52 w-80 md:w-72"
                 src={assetUrl}
-                href={fullUrl}
+                href={customContent.link}
                 time={customContent.time}
                 date={customContent.date} />
         {/each}

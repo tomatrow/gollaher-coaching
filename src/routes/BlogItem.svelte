@@ -6,10 +6,7 @@
     export let router
 </script>
 
-{#await load(router.path).then(page => page.item)}
-    <p>...waiting</p>
-{:then item}
-    <Rule />
+{#await load(router.path).then(page => page.item) then item}
     <Bar class="bg-black">
         <Section class="space-y-8">
             <h1 class="font-lazer text-c text-center text-5xl">{item.title}</h1>

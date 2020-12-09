@@ -7,10 +7,7 @@
     export let router
 </script>
 
-{#await load(router.path)}
-    <p>...waiting</p>
-{:then page}
-    <Rule />
+{#await load(router.path) then page}
     <Bar class="bg-black">
         <Section class="space-y-8 flex flex-col">
             <h1 class="font-lazer text-c text-center text-5xl">{page.collection.title}</h1>

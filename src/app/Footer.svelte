@@ -6,19 +6,18 @@
     import Input from "../components/Input.svelte"
 
     import Section from "../components/Section.svelte"
-    import icons from "@icons-pack/svelte-simple-icons"
 
     $: number = $page.websiteSettings.contactPhoneNumber
     $: email = $page.websiteSettings.contactEmail
     $: socials = $page.website.socialAccounts
         .map(service => {
-            for (let name of ["instagram", "facebook", "youtube"]) {
+            for (let name of ["instagram", "youtube", "facebook"]) {
                 if (service.serviceName != `${name}-unauth`) continue
 
-                const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1)
                 return {
                     href: service.profileUrl,
-                    icon: icons[capitalizedName]
+                    src: `/assets/${name}.svg`,
+                    alt: name
                 }
             }
 
@@ -44,20 +43,18 @@
                 </div>
             </div>
         </div>
-        <div class="md:space-x-8 flex justify-around">
+        <div class="md:space-x-8 flex justify-around font-bold">
             <div class="flex flex-col">
-                <h5 class="font-bold">Navigation</h5>
+                <h5 class="text-2xl">Navigation</h5>
                 <Navigation items={$secondaryNavigation.items} />
             </div>
             <div class="flex flex-col">
-                <h5 class="font-bold">Contact Us</h5>
+                <h5 class="text-2xl">Contact Us</h5>
                 <a href="tel:{number}">{number}</a>
                 <a href="mailto:{email}">{email}</a>
                 <div class="space-x-2 flex justify-end mt-auto p-2">
-                    {#each socials as { href, icon }}
-                        <a {href} target="_blank">
-                            <svelte:component this={icon} color="white" />
-                        </a>
+                    {#each socials as { href, src, alt }}
+                        <a {href} target="_blank"> <img {src} {alt} /> </a>
                     {/each}
                 </div>
             </div>

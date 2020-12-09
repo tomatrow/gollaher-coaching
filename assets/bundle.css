@@ -1,4 +1,4 @@
-body{font-family:Roboto}@font-face{font-weight:400;font-style:normal;font-family:"Bauhaus 93";src:url("https://cdn.jsdelivr.net/gh/tomatrow/gollaher-coaching/assets/font_bauhaus_93.ttf")
+body{overflow-y:scroll;background-color:black;font-family:Roboto}main{min-height:300px;background-color:black}@font-face{font-weight:400;font-style:normal;font-family:"Bauhaus 93";src:url("https://cdn.jsdelivr.net/gh/tomatrow/gollaher-coaching/assets/font_bauhaus_93.ttf")
             format("truetype");font-display:swap}@font-face{font-weight:400;font-style:normal;font-family:"Jonney Fever";src:url("https://cdn.jsdelivr.net/gh/tomatrow/gollaher-coaching/assets/font_johnny_fever.ttf")
             format("truetype");font-display:swap}@font-face{font-weight:400;font-style:normal;font-family:"Lazer84";src:url("https://cdn.jsdelivr.net/gh/tomatrow/gollaher-coaching/assets/font_lazer84.ttf")
             format("truetype");font-display:swap}@font-face{font-weight:100;font-style:italic;font-family:"Roboto";src:url(https://cdn.jsdelivr.net/gh/tomatrow/gollaher-coaching/assets/font_roboto_thin_italic.ttf)

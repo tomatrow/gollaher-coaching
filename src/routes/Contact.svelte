@@ -8,10 +8,7 @@
     export let router
 </script>
 
-{#await load(router.path).then(page => page.items[0])}
-    <p>...waiting</p>
-{:then collection}
-    <Rule />
+{#await load(router.path).then(page => page.items[0]) then collection}
     <Bar class="bg-black">
         <Section class="space-y-8">
             <h1 class="font-lazer text-c text-center text-5xl">{collection.title}</h1>

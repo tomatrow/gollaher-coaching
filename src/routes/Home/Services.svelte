@@ -16,7 +16,7 @@
                 <Link href={fullUrl}>
                     <h3 class="font-bauhaus text-center sm:text-left uppercase text-xl">{title}</h3>
                 </Link>
-                <div class="font-secondary">
+                <div class="font-secondary font-bold">
                     {@html excerpt}
                 </div>
             </div>

@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <Link
-                    class="text-bold justify-self-end font-secondary block mt-auto p-2 uppercase"
+                    class="justify-self-end font-secondary block mt-auto p-2 uppercase font-bold"
                     href={fullUrl}>
                     Read More
                 </Link>

@@ -7,4 +7,3 @@
 <div class="{clazz} flex items-center flex-col py-12" {...$$restProps}>
     <slot />
 </div>
-<Rule />

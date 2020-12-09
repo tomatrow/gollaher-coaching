@@ -1,4 +1,6 @@
 <script>
+    import { send, receive } from "../crossfade.js"
+
     import UrlPattern from "url-pattern"
     import location, { navigate, noMatch } from "../location.js"
     export let path
@@ -18,9 +20,11 @@
 </script>
 
 {#if router.params !== null}
-    {#if component}
-        <svelte:component this={component} {router} {...$$restProps} />
-    {:else}
-        <slot {router} />
-    {/if}
+    <div in:receive out:send>
+        {#if component}
+            <svelte:component this={component} {router} {...$$restProps} />
+        {:else}
+            <slot {router} />
+        {/if}
+    </div>
 {/if}

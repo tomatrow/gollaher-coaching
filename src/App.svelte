@@ -1,9 +1,20 @@
 <script>
+    import { onDestroy } from "svelte"
     import location from "./location.js"
 
     import Header from "./app/Header.svelte"
     import Footer from "./app/Footer.svelte"
     import Main from "./app/Main.svelte"
+
+    // scroll to the top of the page whenever we change routes
+    const unsubscribe = location.subscribe(() =>
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        })
+    )
+    onDestroy(unsubscribe)
 </script>
 
 <style global lang="postcss">
@@ -19,7 +30,14 @@
     /* @tailwind utilities; */
 
     body {
+        overflow-y: scroll;
+        background-color: black;
         font-family: Roboto;
+    }
+
+    main {
+        min-height: 300px;
+        background-color: black;
     }
 
     @font-face {

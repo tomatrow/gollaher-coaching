@@ -1,5 +1,6 @@
 <script>
     import { load, settings } from "../../store.js"
+    import { fade } from "svelte/transition"
 
     import Services from "./Services.svelte"
     import Packages from "./Packages.svelte"
@@ -35,10 +36,7 @@
     })
 </script>
 
-{#await getCollections}
-    <p>...waiting</p>
-{:then collections}
-    <Rule />
+{#await getCollections then collections}
     <Bar
         class="space-y-20 bg-bottom bg-cover bg-no-repeat"
         style="background-image: url(/assets/bg_angled_terrain.png);">
@@ -51,11 +49,13 @@
             <Packages items={collections.packages.items} />
         </Section>
     </Bar>
+    <Rule />
     <Bar class="bg-c">
         <Resources />
     </Bar>
+    <Rule />
     <Bar
-        class="space-y-4 bg-cover bg-no-repeat"
+        class="space-y-10 bg-cover bg-no-repeat"
         style="background-image: url(/assets/bg_scan_lines.png);">
         <VideoLessons collection={collections.lessons} />
         <Section>
@@ -68,6 +68,7 @@
             </ProfileBlurb>
         </Section>
     </Bar>
+    <Rule />
     <Bar
         class="space-y-20 bg-bottom bg-cover bg-no-repeat"
         style="background-image: url(/assets/bg_angled_terrain.png);">
@@ -77,6 +78,7 @@
 
         <BlogPosts collection={collections.blog} />
     </Bar>
+    <Rule />
     <Bar class="bg-black text-white font-bold">
         <Section class="text-center">
             <div class="text-3xl">
@@ -85,6 +87,7 @@
             <h3 class="font-bauhaus uppercase text-xl">{collections.quotes.items[0].title}</h3>
         </Section>
     </Bar>
+    <Rule />
     <Bar style="background-image: url(/assets/bg_scan_lines.png);">
         <Section
             class="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row px-4 text-white">
