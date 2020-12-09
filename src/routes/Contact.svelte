@@ -1,7 +1,6 @@
 <script>
     import { load } from "../store.js"
     import Section from "../components/Section.svelte"
-    import Rule from "../components/Rule.svelte"
     import Booking from "../components/Booking.svelte"
     import Bar from "./Home/Bar.svelte"
 

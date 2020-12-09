@@ -1,8 +1,6 @@
 <script>
-    import { fade } from "svelte/transition"
     import { load } from "../store.js"
     import Section from "../components/Section.svelte"
-    import Rule from "../components/Rule.svelte"
     import Bar from "./Home/Bar.svelte"
     export let router
 </script>

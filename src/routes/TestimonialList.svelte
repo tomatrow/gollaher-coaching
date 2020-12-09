@@ -2,7 +2,6 @@
     import { load } from "../store.js"
     import Testimonials from "./Home/Testimonials.svelte"
     import Section from "../components/Section.svelte"
-    import Rule from "../components/Rule.svelte"
     import Bar from "./Home/Bar.svelte"
     export let router
 </script>

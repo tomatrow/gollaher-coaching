@@ -1,5 +1,4 @@
 <script>
-    import location from "../location.js"
     import Link from "../components/Link.svelte"
 </script>
 

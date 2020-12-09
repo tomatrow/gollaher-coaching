@@ -1,7 +1,6 @@
 <script>
     import { page, secondaryNavigation } from "../store.js"
     import Navigation from "../components/Navigation.svelte"
-    import Link from "../components/Link.svelte"
     import Logo from "../components/Logo.svelte"
     import Input from "../components/Input.svelte"
 
