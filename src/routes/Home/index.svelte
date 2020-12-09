@@ -7,7 +7,7 @@
     import VideoLessons from "./VideoLessons.svelte"
     import Testimonials from "./Testimonials.svelte"
 
-    import Section from "./Section.svelte"
+    import Section from "../../components/Section.svelte"
     import Bar from "./Bar.svelte"
     import BlogPosts from "./BlogPosts.svelte"
     import Rule from "../../components/Rule.svelte"

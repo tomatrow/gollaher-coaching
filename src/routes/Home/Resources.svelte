@@ -1,5 +1,5 @@
 <script>
-    import Section from "./Section.svelte"
+    import Section from "../../components/Section.svelte"
     import Input from "../../components/Input.svelte"
     import Button from "../../components/Button.svelte"
 </script>

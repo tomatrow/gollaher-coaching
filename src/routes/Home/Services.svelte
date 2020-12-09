@@ -1,6 +1,6 @@
 <script>
     import Link from "../../components/Link.svelte"
-    import Section from "./Section.svelte"
+    import Section from "../../components/Section.svelte"
     import Title from "./Title.svelte"
     export let collection
 </script>

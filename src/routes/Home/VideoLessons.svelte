@@ -1,5 +1,5 @@
 <script>
-    import Section from "./Section.svelte"
+    import Section from "../../components/Section.svelte"
     import Title from "./Title.svelte"
     import VideoCover from "./VideoCover.svelte"
     export let collection

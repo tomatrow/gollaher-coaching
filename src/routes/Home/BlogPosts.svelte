@@ -1,6 +1,6 @@
 <script>
     import { settings } from "../../store.js"
-    import Section from "./Section.svelte"
+    import Section from "../../components/Section.svelte"
     import Title from "./Title.svelte"
     import Card from "./Card.svelte"
     import Link from "../../components/Link.svelte"

@@ -5,7 +5,7 @@
     import Logo from "../components/Logo.svelte"
     import Input from "../components/Input.svelte"
 
-    import Section from "../routes/Home/Section.svelte"
+    import Section from "../components/Section.svelte"
     import icons from "@icons-pack/svelte-simple-icons"
 
     $: number = $page.websiteSettings.contactPhoneNumber

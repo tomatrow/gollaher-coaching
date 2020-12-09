@@ -6,7 +6,7 @@
     import Link from "../components/Link.svelte"
     import Button from "../components/Button.svelte"
     import ProfileBlurb from "../components/ProfileBlurb.svelte"
-    import Section from "../routes/Home/Section.svelte"
+    import Section from "../components/Section.svelte"
 
     $: isHome = $page.collection.fullUrl == "/"
 </script>
