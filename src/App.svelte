@@ -131,6 +131,13 @@
         color: #ff00ba;
     }
 
+    .bg-lines {
+        background-image: url(/assets/bg_scan_lines.png);
+    }
+    .bg-terrain {
+        background-image: url(/assets/bg_angled_terrain.png);
+    }
+
     .font-primary {
         font-family: "Roboto";
     }
@@ -142,6 +149,9 @@
     }
     .font-lazer {
         font-family: "Lazer84";
+    }
+    .font-jonney-fever {
+        font-family: "Jonney Fever";
     }
 </style>
 

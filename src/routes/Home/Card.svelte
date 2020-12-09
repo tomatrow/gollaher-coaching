@@ -9,6 +9,6 @@
     }
 </style>
 
-<div class="{clazz} px-4 border-2 border-white bg-black" {...$$restProps}>
+<div class="{clazz} border-2 border-white bg-black" {...$$restProps}>
     <slot />
 </div>

@@ -1,0 +1,43 @@
+<script>
+    import { settings } from "../../store.js"
+    import Section from "./Section.svelte"
+    import Title from "./Title.svelte"
+    import Card from "./Card.svelte"
+    import Link from "../../components/Link.svelte"
+
+    export let collection
+</script>
+
+<Section class="flex items-center flex-col">
+    <Title href={collection.href} title={collection.title} />
+    <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {#each collection.items as { assetUrl, fullUrl, excerpt, title }}
+            <Card class="sm:w-60 flex flex-col justify-between w-full">
+                <div>
+                    <Link href={fullUrl}>
+                        <img src={assetUrl} alt={title} class="h-52 w-full sm:h-32 object-cover" />
+                    </Link>
+                    <div class="p-2">
+                        <Link href={fullUrl}>
+                            <h3 class="font-bauhaus text-center uppercase text-xl">{title}</h3>
+                        </Link>
+                        {@html excerpt}
+                    </div>
+                </div>
+                <Link
+                    class="text-bold justify-self-end font-secondary block mt-auto p-2 uppercase"
+                    href={fullUrl}>
+                    Read More
+                </Link>
+            </Card>
+        {/each}
+    </div>
+    <Link href={collection.href} class="flex items-center justify-center mt-4">
+        <span
+            class="font-jonney-fever uppercase text-3xl">{$settings.home.blogPosts.showMoreTitle}</span>
+        <svg viewBox="0 0 100 100" fill="white" class="h-12">
+            <polygon points="25,25 25,75 65,50" />
+            <polygon points="50,25 50,75 90,50" />
+        </svg>
+    </Link>
+</Section>

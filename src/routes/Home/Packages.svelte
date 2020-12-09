@@ -10,8 +10,8 @@
     <Title href={collection.href} title={collection.title} />
     <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         {#each collection.items as { excerpt, fullUrl, title }}
-            <Card class="rounded text-white">
-                <div class="bg-red py-4 sm:px-8">
+            <Card class="px-4 rounded text-white">
+                <div class="py-4 sm:px-8">
                     <Link href={fullUrl}>
                         <h3 class="font-bauhaus text-center uppercase text-xl">{title}</h3>
                     </Link>
