@@ -7,7 +7,7 @@
 </script>
 
 <div
-    class="{reverse ? 'sm:flex-row-reverse' : 'sm:flex-row'} flex items-center flex-col justify-center my-10 sm:w-4/5">
+    class="{reverse ? 'sm:flex-row-reverse' : 'sm:flex-row'} flex items-center flex-col justify-center">
     <Link href="/about" class="flex-grow-0 flex-shrink-0 sm:w-2/5">
         <img class="mx-auto w-4/5 sm:w-full h-auto" {src} {alt} />
     </Link>

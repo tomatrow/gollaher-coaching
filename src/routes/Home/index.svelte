@@ -46,15 +46,19 @@
     <Bar class="bg-c">
         <Resources />
     </Bar>
-    <Bar class="bg-cover bg-no-repeat" style="background-image: url(/assets/bg_scan_lines.png);">
+    <Bar
+        class="space-y-4 bg-cover bg-no-repeat"
+        style="background-image: url(/assets/bg_scan_lines.png);">
         <VideoLessons collection={collections.lessons} />
-        <ProfileBlurb
-            reverse
-            title={$settings.home.lowerProfileBlurb.title}
-            src={$settings.home.lowerProfileBlurb.src}
-            alt={$settings.home.lowerProfileBlurb.alt}>
-            {@html $settings.home.lowerProfileBlurb.body}
-        </ProfileBlurb>
+        <Section>
+            <ProfileBlurb
+                reverse
+                title={$settings.home.lowerProfileBlurb.title}
+                src={$settings.home.lowerProfileBlurb.src}
+                alt={$settings.home.lowerProfileBlurb.alt}>
+                {@html $settings.home.lowerProfileBlurb.body}
+            </ProfileBlurb>
+        </Section>
     </Bar>
     <Bar
         class="space-y-20 bg-bottom bg-cover bg-no-repeat"
