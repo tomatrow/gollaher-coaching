@@ -10,9 +10,9 @@
 
 <Section class="flex items-center flex-col">
     <Title href={collection.href} title={collection.title} />
-    <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {#each collection.items as { assetUrl, fullUrl, excerpt, title }}
-            <Card class="sm:w-60 flex flex-col justify-between w-full">
+            <Card class="flex flex-col justify-between w-full">
                 <div>
                     <Link href={fullUrl}>
                         <img src={assetUrl} alt={title} class="h-52 w-full sm:h-32 object-cover" />

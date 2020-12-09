@@ -4,12 +4,26 @@
     import Link from "../components/Link.svelte"
     import Logo from "../components/Logo.svelte"
     import Input from "../components/Input.svelte"
+    import Icon from "../components/Icon.svelte"
+    import icons, { Instagram, Facebook, Youtube } from "@icons-pack/svelte-simple-icons"
 
     $: number = $page.websiteSettings.contactPhoneNumber
     $: email = $page.websiteSettings.contactEmail
-    $: socials = $page.website.socialAccounts.filter(service =>
-        ["instagram-unauth", "facebook-unauth", "youtube-unauth"].includes(service.serviceName)
-    )
+    $: socials = $page.website.socialAccounts
+        .map(service => {
+            for (let name of ["instagram", "facebook", "youtube"]) {
+                if (service.serviceName != `${name}-unauth`) continue
+
+                const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1)
+                return {
+                    href: service.profileUrl,
+                    icon: icons[capitalizedName]
+                }
+            }
+
+            return null
+        })
+        .filter(service => service)
 </script>
 
 <footer
@@ -39,8 +53,10 @@
             <a href="tel:{number}">{number}</a>
             <a href="mailto:{email}">{email}</a>
             <div class="space-x-2 flex justify-end mt-auto p-2">
-                {#each socials as { profileUrl, serviceName }}
-                    <a href={profileUrl} target="_blank">{serviceName[0]}</a>
+                {#each socials as { href, icon }}
+                    <a {href} target="_blank">
+                        <svelte:component this={icon} color="white" />
+                    </a>
                 {/each}
             </div>
         </div>
