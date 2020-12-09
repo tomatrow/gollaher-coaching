@@ -30,7 +30,7 @@ const parser = new DOMParser()
 // load data for an sqs page
 export async function load(path) {
     const response = await fetch(path)
-    const responseText = await response.text()
+    const responseText = await response.clone().text()
 
     const doc = parser.parseFromString(responseText, "text/html")
     const data = parse("page", true, doc)

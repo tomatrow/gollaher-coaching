@@ -6,7 +6,9 @@
     import Resources from "./Resources.svelte"
     import VideoLessons from "./VideoLessons.svelte"
     import Testimonials from "./Testimonials.svelte"
+    import Title from "./Title.svelte"
 
+    import Booking from "../../components/Booking.svelte"
     import Section from "../../components/Section.svelte"
     import Bar from "./Bar.svelte"
     import BlogPosts from "./BlogPosts.svelte"
@@ -40,8 +42,14 @@
     <Bar
         class="space-y-20 bg-bottom bg-cover bg-no-repeat"
         style="background-image: url(/assets/bg_angled_terrain.png);">
-        <Services collection={collections.services} />
-        <Packages collection={collections.packages} />
+        <Section class="flex items-center flex-col">
+            <Title href={collections.services.href} title={collections.services.title} />
+            <Services items={collections.services.items} />
+        </Section>
+        <Section class="flex items-center flex-col">
+            <Title href={collections.packages.href} title={collections.packages.title} />
+            <Packages items={collections.packages.items} />
+        </Section>
     </Bar>
     <Bar class="bg-c">
         <Resources />
@@ -63,7 +71,10 @@
     <Bar
         class="space-y-20 bg-bottom bg-cover bg-no-repeat"
         style="background-image: url(/assets/bg_angled_terrain.png);">
-        <Testimonials collection={collections.testimonials} />
+        <Section>
+            <Testimonials items={collections.testimonials.items.slice(0, 1)} />
+        </Section>
+
         <BlogPosts collection={collections.blog} />
     </Bar>
     <Bar class="bg-black text-white font-bold">
@@ -85,14 +96,7 @@
                     {@html $settings.home.contact.body}
                 </div>
             </div>
-            <div class="space-y-4 flex items-center flex-col sm:w-full">
-                <Input class="w-full" type="text" placeholder=" Enter your full name" />
-                <Input class="w-full" type="telephone" placeholder=" Enter your phone number" />
-                <Input class="w-full" type="email" placeholder=" Enter your e-mail" />
-                <Button class="mx-4">
-                    <span class="font-bauhaus px-4 sm:max-w-xs uppercase text-2xl">Book Now</span>
-                </Button>
-            </div>
+            <Booking />
         </Section>
     </Bar>
 {:catch error}

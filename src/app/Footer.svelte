@@ -27,7 +27,7 @@
         .filter(service => service)
 </script>
 
-<footer class="bg-b font-secondary flex justify-center p-4 w-full text-white">
+<footer class="bg-b font-secondary flex justify-center py-12 w-full text-white">
     <Section class="bg-b space-y-8 flex flex-col md:flex-row md:justify-around">
         <div class="space-y-8 flex items-center flex-col">
             <div class="sm:w-80 sm:max-w-none relative max-w-sm w-full">

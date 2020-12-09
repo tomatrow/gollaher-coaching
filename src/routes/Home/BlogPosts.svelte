@@ -32,7 +32,7 @@
             </Card>
         {/each}
     </div>
-    <Link href={collection.href} class="flex items-center justify-center mt-4">
+    <Link href={collection.fullUrl} class="flex items-center justify-center mt-4">
         <span
             class="font-jonney-fever uppercase text-3xl">{$settings.home.blogPosts.showMoreTitle}</span>
         <svg viewBox="0 0 100 100" fill="white" class="h-12">
