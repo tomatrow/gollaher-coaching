@@ -3,4 +3,4 @@
     export { clazz as class }
 </script>
 
-<input class="{clazz} placeholder-black text-bold py-2 px-0 text-black" {...$$restProps} />
+<input class="{clazz} text-bold py-2 px-0 placeholder-black text-black" {...$$restProps} />

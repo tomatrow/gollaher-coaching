@@ -1,8 +1,8 @@
 <script>
-    import { send, receive } from "../crossfade.js"
-
+    import { fade } from "svelte/transition"
     import UrlPattern from "url-pattern"
     import location, { navigate, noMatch } from "../location.js"
+
     export let path
     export let component = undefined
     export let redirect = undefined
@@ -20,7 +20,7 @@
 </script>
 
 {#if router.params !== null}
-    <div in:receive out:send>
+    <div transition:fade={{ duration: 200 }}>
         {#if component}
             <svelte:component this={component} {router} {...$$restProps} />
         {:else}

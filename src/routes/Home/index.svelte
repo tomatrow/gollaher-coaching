@@ -1,6 +1,7 @@
 <script>
-    import { load, settings } from "../../store.js"
+    import { load, SETTINGS } from "../../utility.js"
     import { fade } from "svelte/transition"
+    import { getContext } from "svelte"
 
     import Services from "./Services.svelte"
     import Packages from "./Packages.svelte"
@@ -17,6 +18,8 @@
     import ProfileBlurb from "../../components/ProfileBlurb.svelte"
     import Input from "../../components/Input.svelte"
     import Button from "../../components/Button.svelte"
+
+    const settings = getContext(SETTINGS)
 
     export let router
 
@@ -61,10 +64,10 @@
         <Section>
             <ProfileBlurb
                 reverse
-                title={$settings.home.lowerProfileBlurb.title}
-                src={$settings.home.lowerProfileBlurb.src}
-                alt={$settings.home.lowerProfileBlurb.alt}>
-                {@html $settings.home.lowerProfileBlurb.body}
+                title={settings.home.lowerProfileBlurb.title}
+                src={settings.home.lowerProfileBlurb.src}
+                alt={settings.home.lowerProfileBlurb.alt}>
+                {@html settings.home.lowerProfileBlurb.body}
             </ProfileBlurb>
         </Section>
     </Bar>
@@ -93,10 +96,10 @@
             class="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row px-4 text-white">
             <div>
                 <h3 class="font-jonney-fever text-center sm:text-left uppercase text-3xl">
-                    {$settings.home.contact.title}
+                    {settings.home.contact.title}
                 </h3>
                 <div class="space-y-2 font-bold">
-                    {@html $settings.home.contact.body}
+                    {@html settings.home.contact.body}
                 </div>
             </div>
             <Booking />

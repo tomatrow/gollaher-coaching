@@ -1,1 +1,3 @@
-<script id="secondaryNavigation">[{@|json}]</script>
+<script id="secondaryNavigation">
+    props.secondaryNavigation = {@|json}
+</script>

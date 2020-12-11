@@ -1,5 +1,6 @@
 <script>
-    import { primaryNavigation, page, settings } from "../store.js"
+    import { page, SETTINGS } from "../utility.js"
+    import { getContext } from "svelte"
 
     import Navigation from "../components/Navigation.svelte"
     import Logo from "../components/Logo.svelte"
@@ -9,6 +10,10 @@
     import Section from "../components/Section.svelte"
 
     $: isHome = $page.collection.fullUrl == "/"
+
+    const settings = getContext(SETTINGS)
+
+    export let navigation
 </script>
 
 <header
@@ -26,7 +31,7 @@
             </Logo>
         {/if}
         <div class="space-x-2 flex items-center flex-wrap justify-center sm:mt-4 p-4">
-            <Navigation items={$primaryNavigation.items} />
+            <Navigation items={navigation.items} />
             <Link href="/contact">
                 <Button><span class="py-2 px-4 text-white uppercase">Contact Us</span></Button>
             </Link>
@@ -34,10 +39,10 @@
         {#if isHome}
             <Section>
                 <ProfileBlurb
-                    title={$settings.home.headerProfileBlurb.title}
-                    src={$settings.home.headerProfileBlurb.src}
-                    alt={$settings.home.headerProfileBlurb.alt}>
-                    {@html $settings.home.headerProfileBlurb.body}
+                    title={settings.home.headerProfileBlurb.title}
+                    src={settings.home.headerProfileBlurb.src}
+                    alt={settings.home.headerProfileBlurb.alt}>
+                    {@html settings.home.headerProfileBlurb.body}
                 </ProfileBlurb>
             </Section>
         {/if}

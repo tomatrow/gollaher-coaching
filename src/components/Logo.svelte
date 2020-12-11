@@ -1,11 +1,12 @@
 <script>
-    import { page } from "../store.js"
-    import { send, receive } from "../crossfade.js"
+    import { fade } from "svelte/transition"
+    import { page } from "../utility.js"
     import Link from "./Link.svelte"
-    $: website = $page.website
 </script>
 
-<div {...$$props} in:receive out:send>
-    <Link href="/"><img class="mx-auto" src={website.logoImageUrl} alt={website.siteTitle} /></Link>
+<div {...$$props} transition:fade={{ duration: 200 }}>
+    <Link href="/">
+        <img class="mx-auto" src={$page.website.logoImageUrl} alt={$page.website.siteTitle} />
+    </Link>
     <slot />
 </div>

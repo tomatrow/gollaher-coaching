@@ -1,5 +1,5 @@
 <script>
-    import { load } from "../store.js"
+    import { load } from "../utility.js"
     import Section from "../components/Section.svelte"
     import Booking from "../components/Booking.svelte"
     import Bar from "./Home/Bar.svelte"

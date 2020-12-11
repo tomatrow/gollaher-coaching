@@ -1,5 +1,5 @@
 <script>
-    import { load } from "../store.js"
+    import { load } from "../utility.js"
     import Link from "../components/Link.svelte"
     export let router
 </script>

@@ -47,7 +47,7 @@ function formatCss(filepath, source, zen, zenTailwind) {
 
 export default function (options) {
     const zen = fs.readFileSync("zen", "utf8").split("\n")
-    const zenTailwind = fs.readFileSync("zen-tailwind", "utf8").split("\n")
+    const zenTailwind = fs.readFileSync("zen-tailwind", "utf8")
 
     return {
         ...transform({

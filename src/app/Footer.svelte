@@ -1,34 +1,21 @@
 <script>
-    import { page, secondaryNavigation } from "../store.js"
+    import { page } from "../utility.js"
     import Navigation from "../components/Navigation.svelte"
     import Logo from "../components/Logo.svelte"
     import Input from "../components/Input.svelte"
-
     import Section from "../components/Section.svelte"
 
-    $: number = $page.websiteSettings.contactPhoneNumber
-    $: email = $page.websiteSettings.contactEmail
-    $: socials = $page.website.socialAccounts
-        .map(service => {
-            for (let name of ["instagram", "youtube", "facebook"]) {
-                if (service.serviceName != `${name}-unauth`) continue
+    const getName = serviceName => serviceName.replace("-unauth", "")
 
-                return {
-                    href: service.profileUrl,
-                    src: `/assets/${name}.svg`,
-                    alt: name
-                }
-            }
+    function handleClick(event) {}
 
-            return null
-        })
-        .filter(service => service)
+    export let navigation
 </script>
 
-<footer class="bg-b font-secondary flex justify-center py-12 w-full text-white">
-    <Section class="bg-b space-y-8 flex flex-col md:flex-row md:justify-around">
+<footer class="font-secondary flex justify-center py-12 w-full bg-b text-white">
+    <Section class="space-y-8 flex flex-col md:flex-row md:justify-around bg-b">
         <div class="space-y-8 flex items-center flex-col">
-            <div class="sm:w-80 sm:max-w-none relative max-w-sm w-full">
+            <div class="sm:w-80 sm:max-w-none relative w-full max-w-sm">
                 <Logo>
                     <span
                         class="font-secondary sm:absolute sm:bottom-0 sm:left-0 hidden sm:block sm:mb-4 text-white font-bold">{$page.website.siteTagLine}</span>
@@ -38,22 +25,33 @@
                 <span class="font-bold">Subscribe to get the latest news from us</span>
                 <div class="flex">
                     <Input type="email" placeholder=" Email" />
-                    <button class="bg-a py-2 px-4">Subscribe</button>
+                    <button
+                        class="py-2 px-4 bg-a"
+                        on:click|preventDefault={handleClick}>Subscribe</button>
                 </div>
             </div>
         </div>
         <div class="md:space-x-8 flex justify-around font-bold">
             <div class="flex flex-col">
                 <h5 class="text-2xl">Navigation</h5>
-                <Navigation items={$secondaryNavigation.items} />
+                <Navigation items={navigation.items} />
             </div>
             <div class="flex flex-col">
                 <h5 class="text-2xl">Contact Us</h5>
-                <a href="tel:{number}">{number}</a>
-                <a href="mailto:{email}">{email}</a>
+                <a
+                    href="tel:{$page.websiteSettings.contactPhoneNumber}">{$page.websiteSettings.contactPhoneNumber}</a>
+                <a
+                    href="mailto:{$page.websiteSettings.contactEmail}">{$page.websiteSettings.contactEmail}</a>
                 <div class="space-x-2 flex justify-end mt-auto p-2">
-                    {#each socials as { href, src, alt }}
-                        <a {href} target="_blank"> <img {src} {alt} /> </a>
+                    {#each $page.website.socialAccounts as { profileUrl, serviceName }}
+                        {#if ['instagram', 'youtube', 'facebook'].includes(getName(serviceName))}
+                            <a href={profileUrl} target="_blank">
+                                <img
+                                    class="w-6"
+                                    src="/assets/{getName(serviceName)}.svg"
+                                    alt={getName(serviceName)} />
+                            </a>
+                        {/if}
                     {/each}
                 </div>
             </div>

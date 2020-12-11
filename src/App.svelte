@@ -1,10 +1,16 @@
 <script>
+    import { setContext } from "svelte"
     import { onDestroy } from "svelte"
     import location from "./location.js"
+    import { SETTINGS } from "./utility.js"
 
     import Header from "./app/Header.svelte"
     import Footer from "./app/Footer.svelte"
     import Main from "./app/Main.svelte"
+
+    export let primaryNavigation
+    export let secondaryNavigation
+    export let settings
 
     // scroll to the top of the page whenever we change routes
     const unsubscribe = location.subscribe(() =>
@@ -15,6 +21,8 @@
         })
     )
     onDestroy(unsubscribe)
+
+    setContext(SETTINGS, settings)
 </script>
 
 <style global lang="postcss">
@@ -173,6 +181,6 @@
     }
 </style>
 
-<Header />
+<Header navigation={primaryNavigation} />
 <Main />
-<Footer />
+<Footer navigation={secondaryNavigation} />

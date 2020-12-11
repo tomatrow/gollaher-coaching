@@ -12,6 +12,7 @@
         height: 0;
         content: "";
     }
+
     div::after {
         display: table;
         clear: both;

@@ -1,9 +1,12 @@
 <script>
-    import { settings } from "../../store.js"
+    import { getContext } from "svelte"
+    import { SETTINGS } from "../../utility.js"
     import Section from "../../components/Section.svelte"
     import Title from "./Title.svelte"
     import Card from "./Card.svelte"
     import Link from "../../components/Link.svelte"
+
+    const settings = getContext(SETTINGS)
 
     export let collection
 </script>
@@ -34,7 +37,7 @@
     </div>
     <Link href={collection.fullUrl} class="flex items-center justify-center mt-4">
         <span
-            class="font-jonney-fever uppercase text-3xl">{$settings.home.blogPosts.showMoreTitle}</span>
+            class="font-jonney-fever uppercase text-3xl">{settings.home.blogPosts.showMoreTitle}</span>
         <svg viewBox="0 0 100 100" fill="white" class="h-12">
             <polygon points="25,25 25,75 65,50" />
             <polygon points="50,25 50,75 90,50" />
