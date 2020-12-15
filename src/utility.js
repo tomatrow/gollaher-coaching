@@ -1,6 +1,10 @@
 import { writable, get } from "svelte/store"
 
+// key for settings
 export const SETTINGS = {}
+
+// instagram images
+export const feed = writable({ data: [], paging: {} })
 
 // wrapped means it's wrapped in an array
 // it's the only way I found to avoid parsing errors in the dom when injecteting sqs data

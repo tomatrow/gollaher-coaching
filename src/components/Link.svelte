@@ -1,15 +1,17 @@
 <script>
-    import { navigate } from "../location.js"
+    import location, { navigate } from "../location.js"
+    let clazz = ""
+    export { clazz as class }
     export let href
+
+    const isLocalAnchor = path =>
+        path == "#" || (path.includes($location) && path.indexOf("#") !== -1)
 </script>
 
-<style>
-    a {
-        cursor: pointer;
-    }
-</style>
-
 <!-- svelte-ignore a11y-missing-attribute -->
-<a {...$$restProps} on:click|preventDefault={() => navigate(href)}>
+<a
+    class="{clazz} cursor-pointer"
+    {...$$restProps}
+    on:click|preventDefault={() => navigate(href, isLocalAnchor(href))}>
     <slot />
 </a>

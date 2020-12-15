@@ -6,3 +6,4 @@ build/
 scripts/bundle.js
 styles/bundle.css
 node_modules/
+assets/bundle.css

@@ -22,22 +22,22 @@
     <div class="space-y-4 flex items-center flex-col">
         {#if isHome}
             <Logo class="mx-auto p-8 w-full sm:w-4/5">
-                <Link href="/contact" class="flex items-center flex-col">
+                <a href="#contact" class="flex items-center flex-col">
                     <Button>
                         <span class="font-secondary py-2 px-4 text-white uppercase font-bold">Book
                             Now</span>
                     </Button>
-                </Link>
+                </a>
             </Logo>
         {/if}
         <div class="space-x-2 flex items-center flex-wrap justify-center sm:mt-4 p-4">
             <Navigation items={navigation.items} />
-            <Link href="/contact">
+            <a href="#contact">
                 <Button><span class="py-2 px-4 text-white uppercase">Contact Us</span></Button>
-            </Link>
+            </a>
         </div>
         {#if isHome}
-            <Section>
+            <Section id="about">
                 <ProfileBlurb
                     title={settings.home.headerProfileBlurb.title}
                     src={settings.home.headerProfileBlurb.src}

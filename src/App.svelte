@@ -23,6 +23,8 @@
     onDestroy(unsubscribe)
 
     setContext(SETTINGS, settings)
+
+    console.log(primaryNavigation, secondaryNavigation)
 </script>
 
 <style global lang="postcss">
