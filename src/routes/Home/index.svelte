@@ -1,23 +1,22 @@
 <script>
     import { load, SETTINGS } from "../../utility.js"
-    import { fade } from "svelte/transition"
+
     import { getContext } from "svelte"
 
     import Services from "./Services.svelte"
     import Packages from "./Packages.svelte"
     import Resources from "./Resources.svelte"
-    import VideoLessons from "./VideoLessons.svelte"
+    import Instagram from "./Instagram.svelte"
+
     import Testimonials from "./Testimonials.svelte"
     import Title from "./Title.svelte"
 
     import Booking from "../../components/Booking.svelte"
     import Section from "../../components/Section.svelte"
     import Bar from "./Bar.svelte"
-    import BlogPosts from "./BlogPosts.svelte"
+
     import Rule from "../../components/Rule.svelte"
     import ProfileBlurb from "../../components/ProfileBlurb.svelte"
-    import Input from "../../components/Input.svelte"
-    import Button from "../../components/Button.svelte"
 
     const settings = getContext(SETTINGS)
 
@@ -31,36 +30,39 @@
             services: findCollection("/services"),
             packages: findCollection("/packages"),
             testimonials: findCollection("/testimonials"),
-            lessons: findCollection("/lessons"),
-            testimonials: findCollection("/testimonials"),
-            blog: findCollection("/blog"),
             quotes: findCollection("/quotes")
         }
     })
 </script>
 
 {#await getCollections then collections}
+    <!-- Services / Packages -->
     <Bar
         class="space-y-20 bg-bottom bg-cover bg-no-repeat"
         style="background-image: url(/assets/bg_angled_terrain.png);">
-        <Section class="flex items-center flex-col">
-            <Title href={collections.services.href} title={collections.services.title} />
+        <!-- Services -->
+        <Section id="services" class="flex items-center flex-col">
+            <Title title={collections.services.title} />
             <Services items={collections.services.items} />
         </Section>
-        <Section class="flex items-center flex-col">
-            <Title href={collections.packages.href} title={collections.packages.title} />
+        <!-- Packages -->
+        <Section id="packages" class="flex items-center flex-col">
+            <Title title={collections.packages.title} />
             <Packages items={collections.packages.items} />
         </Section>
     </Bar>
     <Rule />
+
+    <!-- "Get the Resource" CTA -->
     <Bar class="bg-c">
         <Resources />
     </Bar>
     <Rule />
+
+    <!-- Lower Profile -->
     <Bar
         class="space-y-10 bg-cover bg-no-repeat"
         style="background-image: url(/assets/bg_scan_lines.png);">
-        <VideoLessons collection={collections.lessons} />
         <Section>
             <ProfileBlurb
                 reverse
@@ -72,16 +74,21 @@
         </Section>
     </Bar>
     <Rule />
+
+    <!-- Testimonials / Instagram Feed -->
     <Bar
+        id="testimonials"
         class="space-y-20 bg-bottom bg-cover bg-no-repeat"
         style="background-image: url(/assets/bg_angled_terrain.png);">
         <Section>
             <Testimonials items={collections.testimonials.items.slice(0, 1)} />
         </Section>
-
-        <BlogPosts collection={collections.blog} />
+        <Instagram />
+        <Section />
     </Bar>
     <Rule />
+
+    <!-- Quotes -->
     <Bar class="bg-black text-white font-bold">
         <Section class="text-center">
             <div class="text-3xl">
@@ -91,7 +98,9 @@
         </Section>
     </Bar>
     <Rule />
-    <Bar style="background-image: url(/assets/bg_scan_lines.png);">
+
+    <!-- Contact -->
+    <Bar id="contact" style="background-image: url(/assets/bg_scan_lines.png);">
         <Section
             class="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row px-4 text-white">
             <div>

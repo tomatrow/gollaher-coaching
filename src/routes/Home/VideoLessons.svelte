@@ -6,7 +6,7 @@
 </script>
 
 <Section class="flex items-center flex-col">
-    <Title href={collection.href} title={collection.title} />
+    <Title title={collection.title} />
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {#each collection.items as { assetUrl, fullUrl, customContent }}
             <VideoCover
