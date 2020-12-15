@@ -7,8 +7,8 @@
     import Packages from "./Packages.svelte"
     import Resources from "./Resources.svelte"
     import Instagram from "./Instagram.svelte"
-
     import Testimonials from "./Testimonials.svelte"
+
     import Title from "./Title.svelte"
 
     import Booking from "../../components/Booking.svelte"
