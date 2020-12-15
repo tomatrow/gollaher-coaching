@@ -4,8 +4,6 @@
 
     import Navigation from "../components/Navigation.svelte"
     import Logo from "../components/Logo.svelte"
-    import Link from "../components/Link.svelte"
-    import Button from "../components/Button.svelte"
     import ProfileBlurb from "../components/ProfileBlurb.svelte"
     import Section from "../components/Section.svelte"
 
@@ -23,17 +21,17 @@
         {#if isHome}
             <Logo class="mx-auto p-8 w-full sm:w-4/5">
                 <a href="#contact" class="flex items-center flex-col">
-                    <Button>
+                    <button class="button">
                         <span class="font-secondary py-2 px-4 text-white uppercase font-bold">Book
                             Now</span>
-                    </Button>
+                    </button>
                 </a>
             </Logo>
         {/if}
         <div class="space-x-2 flex items-center flex-wrap justify-center sm:mt-4 p-4">
             <Navigation items={navigation.items} />
             <a href="#contact">
-                <Button><span class="py-2 px-4 text-white uppercase">Contact Us</span></Button>
+                <button class="button"><span class="py-2 px-4 text-white uppercase">Contact Us</span></button>
             </a>
         </div>
         {#if isHome}

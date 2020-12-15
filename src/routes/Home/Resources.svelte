@@ -1,7 +1,7 @@
 <script>
+    import { email, onSubscribe } from "../../utility.js"
     import Section from "../../components/Section.svelte"
     import Input from "../../components/Input.svelte"
-    import Button from "../../components/Button.svelte"
 </script>
 
 <Section
@@ -12,9 +12,9 @@
             resource in building up your emotional IQ</span>
     </div>
     <div class="space-y-4 flex flex-col">
-        <Input type="email" placeholder=" Email" />
-        <Button class="font-bauhaus uppercase">
+        <Input type="email" bind:value={$email} placeholder=" Email" />
+        <button class="button font-bauhaus uppercase" on:click={onSubscribe}>
             <span clas="px-4 text-5xl">Get the Resource</span>
-        </Button>
+        </button>
     </div>
 </Section>

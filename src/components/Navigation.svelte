@@ -4,8 +4,9 @@
 </script>
 
 {#each items as { externalLink }}
-    <a href={externalLink.url}>
-        <span
-            class="{$location == externalLink.url ? 'text-c' : 'text-white'} uppercase">{externalLink.title}</span>
+    <a
+        href={externalLink.url}
+        class="{$location == externalLink.url ? 'text-c' : 'text-white'} uppercase">
+        {externalLink.title}
     </a>
 {/each}

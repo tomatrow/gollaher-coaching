@@ -1,4 +1,5 @@
 <script>
+    import { scale } from "svelte/transition"
     import { instagram } from "../../api.js"
     import { feed } from "../../utility.js"
     import { onMount } from "svelte"
@@ -18,8 +19,8 @@
     })
 </script>
 
-<div class="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-6 p-2">
+<div transition:scale class="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-6 p-2">
     {#each $feed.data as { media_url, permalink, caption }}
-        <a href={permalink}> <img src={media_url} alt={caption} /> </a>
+        <a href={permalink} target="_blank"> <img src={media_url} alt={caption} /> </a>
     {/each}
 </div>

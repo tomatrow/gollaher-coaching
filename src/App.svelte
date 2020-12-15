@@ -1,4 +1,6 @@
 <script>
+    import { SvelteToast } from "@zerodevx/svelte-toast"
+
     import { setContext } from "svelte"
     import { onDestroy } from "svelte"
     import location from "./location.js"
@@ -39,6 +41,39 @@
     /* purgecss end ignore */
     /* @tailwind utilities; */
 
+    :root {
+        --color-a: #25448d;
+        --color-b: black;
+        --color-c: #ff00ba;
+    }
+
+    .bg-a {
+        background-color: var(--color-a);
+    }
+    .bg-b {
+        background-color: var(--color-b);
+    }
+    .bg-c {
+        background-color: var(--color-c);
+    }
+
+    .text-a {
+        color: var(--color-a);
+    }
+    .text-b {
+        color: var(--color-b);
+    }
+    .text-c {
+        color: var(--color-c);
+    }
+
+    /* SvelteToast */
+    .colors {
+        --toastBackground: var(--color-b);
+        --toastColor: var(--color-c);
+        --toastProgressBackground: var(--color-a);
+    }
+
     body {
         overflow-y: scroll;
         background-color: black;
@@ -48,6 +83,10 @@
     main {
         min-height: 300px;
         background-color: black;
+    }
+
+    a:hover {
+        color: var(--color-c);
     }
 
     @font-face {
@@ -139,26 +178,6 @@
         font-display: swap;
     }
 
-    .bg-a {
-        background-color: #25448d;
-    }
-    .bg-b {
-        background-color: black;
-    }
-    .bg-c {
-        background-color: #ff00ba;
-    }
-
-    .text-a {
-        color: #25448d;
-    }
-    .text-b {
-        color: black;
-    }
-    .text-c {
-        color: #ff00ba;
-    }
-
     .bg-lines {
         background-image: url(/assets/bg_scan_lines.png);
     }
@@ -181,8 +200,24 @@
     .font-jonney-fever {
         font-family: "Jonney Fever";
     }
+
+    .button {
+        border: double 0.125rem transparent;
+        border-radius: 5rem;
+        background-image: linear-gradient(to top right, #61bcd8, #233b87, #03050c),
+            linear-gradient(to right, black, #68cbe1, white, #254190 45%, white, #243e8f);
+        background-clip: content-box, border-box;
+        background-origin: border-box;
+    }
+    .button:hover {
+        background-image: linear-gradient(to bottom right, #61bcd8, #233b87, #03050c),
+            linear-gradient(to top right, black, #68cbe1, white, #254190 45%, white, #243e8f);
+    }
 </style>
 
+<div class="colors">
+    <SvelteToast />
+</div>
 <Header navigation={primaryNavigation} />
 <Main />
 <Footer navigation={secondaryNavigation} />

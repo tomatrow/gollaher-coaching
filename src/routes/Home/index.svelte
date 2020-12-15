@@ -83,8 +83,9 @@
         <Section>
             <Testimonials items={collections.testimonials.items.slice(0, 1)} />
         </Section>
-        <Instagram />
-        <Section />
+        <Section>
+            <Instagram />
+        </Section>
     </Bar>
     <Rule />
 
