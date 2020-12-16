@@ -23,10 +23,9 @@
     <Section class="space-y-8 flex flex-col md:flex-row md:justify-around bg-b">
         <div class="space-y-8 flex items-center flex-col">
             <div class="sm:w-80 sm:max-w-none relative w-full max-w-sm">
-                <Logo>
-                    <span
-                        class="font-secondary sm:absolute sm:bottom-0 sm:left-0 hidden sm:block sm:mb-4 text-white font-bold">{$page.website.siteTagLine}</span>
-                </Logo>
+                <Logo />
+                <span
+                    class="font-secondary sm:absolute sm:bottom-0 sm:left-0 hidden sm:block sm:mb-4 text-white font-bold">{$page.website.siteTagLine}</span>
             </div>
             <div class="space-y-1 flex items-center flex-col">
                 <span class="font-bold">Subscribe to get the latest news from us</span>

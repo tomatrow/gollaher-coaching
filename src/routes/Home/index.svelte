@@ -41,12 +41,12 @@
         class="space-y-20 bg-bottom bg-cover bg-no-repeat"
         style="background-image: url(/assets/bg_angled_terrain.png);">
         <!-- Services -->
-        <Section id="services" class="flex items-center flex-col">
+        <Section id="services" class="anchor flex items-center flex-col">
             <Title title={collections.services.title} />
             <Services items={collections.services.items} />
         </Section>
         <!-- Packages -->
-        <Section id="packages" class="flex items-center flex-col">
+        <Section id="packages" class="anchor flex items-center flex-col">
             <Title title={collections.packages.title} />
             <Packages items={collections.packages.items} />
         </Section>
@@ -78,14 +78,14 @@
     <!-- Testimonials / Instagram Feed -->
     <Bar
         id="testimonials"
-        class="space-y-20 bg-bottom bg-cover bg-no-repeat"
+        class="anchor space-y-20 bg-bottom bg-cover bg-no-repeat"
         style="background-image: url(/assets/bg_angled_terrain.png);">
         <Section>
             <Testimonials items={collections.testimonials.items.slice(0, 1)} />
         </Section>
-        <Section>
+        <!-- <Section>
             <Instagram />
-        </Section>
+        </Section> -->
     </Bar>
     <Rule />
 
@@ -101,7 +101,7 @@
     <Rule />
 
     <!-- Contact -->
-    <Bar id="contact" style="background-image: url(/assets/bg_scan_lines.png);">
+    <Bar id="contact" class="anchor" style="background-image: url(/assets/bg_scan_lines.png);">
         <Section
             class="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row px-4 text-white">
             <div>

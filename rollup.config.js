@@ -5,6 +5,8 @@ import css from "rollup-plugin-css-only"
 import fs from "fs"
 import sveltePreprocess from "svelte-preprocess"
 import format from "./format.js"
+import { terser } from "rollup-plugin-terser";
+
 
 const production = !process.env.ROLLUP_WATCH
 
@@ -26,7 +28,7 @@ export default {
             preprocess: sveltePreprocess({
                 sourceMap: !production,
                 postcss: {
-                    plugins: [require("tailwindcss"), require("autoprefixer")]
+                    plugins: [require("tailwindcss")]
                 }
             })
         }),
@@ -34,6 +36,7 @@ export default {
         // a separate file - better for performance
         css({
             output(styles) {
+                console.log("Writting styles...")
                 fs.writeFileSync("assets/bundle.css", styles)
             }
         }),
@@ -47,7 +50,8 @@ export default {
             browser: true,
             dedupe: ["svelte"]
         }),
-        commonjs()
+        commonjs(),
+         production && terser(),
     ],
     watch: {
         clearScreen: false

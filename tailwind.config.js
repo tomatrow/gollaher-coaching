@@ -6,5 +6,9 @@ module.exports = {
     variants: {
         extend: {}
     },
-    plugins: []
+    plugins: [],
+    purge: {
+        // mode: 'all',
+        // content: ["./src/**/*.svelte"]
+    }
 }
