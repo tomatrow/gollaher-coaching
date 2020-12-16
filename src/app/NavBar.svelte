@@ -28,6 +28,7 @@
 </script>
 
 <nav
+    transition:slide
     class="{clazz} {navClasses} font-bauhaus flex justify-between w-full font-bold"
     {...$$restProps}>
     {#if hasLogo}
