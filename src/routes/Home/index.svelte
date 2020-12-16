@@ -81,7 +81,7 @@
         class="anchor space-y-20 bg-bottom bg-cover bg-no-repeat"
         style="background-image: url(/assets/bg_angled_terrain.png);">
         <Section>
-            <Testimonials items={collections.testimonials.items.slice(0, 1)} />
+            <Testimonials items={collections.testimonials.items} />
         </Section>
         <!-- <Section>
             <Instagram />
