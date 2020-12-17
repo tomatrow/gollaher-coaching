@@ -6,7 +6,7 @@
         "deploy-watch": "./utility/deploy-watch.fish",
         "server": "squarespace-server $SQS_SITE_URL --auth",
         "tailwind": "./node_modules/.bin/tailwind build src/App.svelte -o assets/tailwind.css",
-        "start": "nova .; open $SQS_SITE_URL"
+        "start": "nova .; open $SQS_LOCAL_URL"
     },
     "devDependencies": {
         "@fullhuman/postcss-purgecss": "^3.0.0",
