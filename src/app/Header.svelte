@@ -1,18 +1,17 @@
 <script>
-    import { page, SETTINGS } from "../utility.js"
+    import { SETTINGS } from "../utility.js"
     import { getContext } from "svelte"
     import location from "../location.js"
-    import { fade } from "svelte/transition"
 
     import NavBar from "./NavBar.svelte"
 
-    import Navigation from "../components/Navigation.svelte"
     import Logo from "../components/Logo.svelte"
     import ProfileBlurb from "../components/ProfileBlurb.svelte"
     import Section from "../components/Section.svelte"
 
     export let navigation
     let y
+    let showMenu
 
     function getPercent(y) {
         const container = document.querySelector("#navbar")
@@ -26,24 +25,27 @@
     $: isHome = $location == "/" // need to chop off fragments
     $: percent = getPercent(y)
     $: critical = percent >= 1
-</script>
 
-<style>
-    .logo-container {
+    function handleClick(event) {
+        if (event.target.closest("a") === null) return
+        showMenu = false
     }
-</style>
+</script>
 
 <svelte:window bind:scrollY={y} />
 {#if critical}
-    <div class="fixed top-0 right-0 left-0 z-50 flex justify-center bg-black">
+    <div
+        id="floating-navbar"
+        class="fixed top-0 right-0 left-0 z-50 flex justify-center bg-black"
+        on:click={handleClick}>
         <Section>
-            <NavBar {navigation} hasLogo />
+            <NavBar bind:showMenu {navigation} hasLogo />
         </Section>
     </div>
 {/if}
 <header
     class="font-bauhaus py-4 w-full bg-cover bg-no-repeat"
-    style="background-image: url(/assets/bg_the_grid.png); ">
+    style="background-image: url(/assets/bg_the_grid.png)">
     <div class="space-y-4 flex items-center flex-col justify-center">
         {#if isHome}
             <div class="logo-container w-full">

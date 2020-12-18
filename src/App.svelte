@@ -62,16 +62,6 @@
         --toastProgressBackground: var(--color-a);
     }
 
-    .anchor::before {
-        display: block;
-        /* visibility: hidden; */
-        margin-top: -300px;
-        width: 1rem;
-        height: 300px;
-        content: " ";
-        pointer-events: none;
-    }
-
     body {
         overflow-y: scroll;
         background-color: black;

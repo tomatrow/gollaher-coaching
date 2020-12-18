@@ -1,11 +1,7 @@
 <script>
-    import { load, SETTINGS } from "../../utility.js"
-
-    import { scrollToId } from "../../link-manager.js"
+    import { SETTINGS } from "../../utility.js"
 
     import { getContext } from "svelte"
-
-    import { afterUpdate } from "svelte"
 
     import Services from "./Services.svelte"
     import Packages from "./Packages.svelte"
@@ -42,12 +38,12 @@
     class="space-y-20 bg-bottom bg-cover bg-no-repeat"
     style="background-image: url(/assets/bg_angled_terrain.png);">
     <!-- Services -->
-    <Section id="services" class="anchor flex items-center flex-col">
+    <Section id="services" class="flex items-center flex-col">
         <Title title={collections.services.title} />
         <Services items={collections.services.items} />
     </Section>
     <!-- Packages -->
-    <Section id="packages" class="anchor flex items-center flex-col">
+    <Section id="packages" class="flex items-center flex-col">
         <Title title={collections.packages.title} />
         <Packages items={collections.packages.items} />
     </Section>
@@ -79,9 +75,10 @@
 <!-- Testimonials / Instagram Feed -->
 <Bar
     id="testimonials"
-    class="anchor space-y-20 bg-bottom bg-cover bg-no-repeat"
+    class="space-y-20 bg-bottom bg-cover bg-no-repeat"
     style="background-image: url(/assets/bg_angled_terrain.png);">
-    <Section>
+    <Section class="flex items-center flex-col">
+        <Title title={collections.testimonials.title} />
         <Testimonials items={collections.testimonials.items} />
     </Section>
     <!-- <Section>
@@ -102,7 +99,7 @@
 <Rule />
 
 <!-- Contact -->
-<Bar id="contact" class="anchor" style="background-image: url(/assets/bg_scan_lines.png);">
+<Bar id="contact" style="background-image: url(/assets/bg_scan_lines.png);">
     <Section class="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row px-4 text-white">
         <div>
             <h3 class="font-jonney-fever text-center sm:text-left uppercase text-3xl">

@@ -61,8 +61,6 @@ const parse = (id, isWrapped = true, doc = document) => {
 // straight up sqs stuff. I'm going to use their structure.
 export const page = writable(parse("page"))
 
-console.log(get(page))
-
 const parser = new DOMParser()
 
 // load data for an sqs page

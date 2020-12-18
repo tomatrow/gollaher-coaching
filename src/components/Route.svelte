@@ -1,7 +1,7 @@
 <script>
     import { fade } from "svelte/transition"
     import UrlPattern from "url-pattern"
-    import location, { navigate, noMatch } from "../location.js"
+    import location, { navigate, noMatch, hash, scrollToId } from "../location.js"
 
     import { tick } from "svelte"
     import { load } from "../utility.js"
@@ -10,38 +10,35 @@
     export let component = undefined
     export let redirect = undefined
 
+    let promise
+
     $: pattern = new UrlPattern(path)
-    $: router = {
-        params: $location,
-        path: $location
-    }
+    $: params = pattern.match($location)
 
     $: {
-        if (router.params !== null) {
+        if (params !== null) {
             $noMatch = false
             if (redirect) navigate(redirect, true)
+            promise = load($location)
         }
     }
+
+    $: promise?.then(tick).then(() => scrollToId($hash.slice(1)))
 </script>
 
-{#if router.params !== null}
-    {#await load(router.path) then data}
-        <div transition:fade={{ duration: 200 }}>
+{#if params !== null}
+    {#await promise then data}
+        <div transition:fade>
             {#if component}
-                <svelte:component this={component} router={{ ...router, data }} {...$$restProps} />
+                <svelte:component
+                    this={component}
+                    router={{ params, data, path: $location }}
+                    {...$$restProps} />
             {:else}
-                <slot router={{ ...router, data }} />
+                <slot router={{ params, data, path: $location }} />
             {/if}
         </div>
+    {:catch}
+        <p class="text-white">Error</p>
     {/await}
 {/if}
-
-<!-- {#if router.hasOwnProperty('data')}
-    <div transition:fade={{ duration: 200 }}>
-        {#if component}
-            <svelte:component this={component} {router} {...$$restProps} />
-        {:else}
-            <slot {router} />
-        {/if}
-    </div>
-{/if} -->

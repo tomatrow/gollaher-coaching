@@ -12,7 +12,7 @@
     let clazz = ""
     export { clazz as class }
 
-    let showMenu = false
+    export let showMenu = false
     let isLarge = false
 
     onMount(() => {
@@ -33,7 +33,9 @@
     class="{clazz} {navClasses} font-bauhaus flex justify-between w-full font-bold"
     {...$$restProps}>
     {#if hasLogo}
-        <Logo class="w-40 h-auto" />
+        <Link href="/">
+            <Logo class="w-40 h-auto" />
+        </Link>
     {/if}
     <div class="{menuClasses} flex w-full text-2xl">
         {#if hasLogo}
@@ -44,7 +46,6 @@
             <Link href="/#contact" class="button">
                 <span class="py-2 px-4 text-white uppercase">Book Now</span>
             </Link>
-            <Link href="/not-found">Test</Link>
         {/if}
     </div>
 </nav>
