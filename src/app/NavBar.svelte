@@ -5,6 +5,7 @@
     import Hamburger from "./Hamburger.svelte"
     import Navigation from "../components/Navigation.svelte"
     import Logo from "../components/Logo.svelte"
+    import Link from "../components/Link.svelte"
 
     export let hasLogo = false
     export let navigation
@@ -40,9 +41,10 @@
         {/if}
         {#if !hasLogo || showMenu || isLarge}
             <Navigation items={navigation.items} />
-            <a href="/#contact" transition:slide>
-                <button class="button"><span class="py-2 px-4 text-white uppercase">Book Now</span></button>
-            </a>
+            <Link href="/#contact" class="button">
+                <span class="py-2 px-4 text-white uppercase">Book Now</span>
+            </Link>
+            <Link href="/not-found">Test</Link>
         {/if}
     </div>
 </nav>

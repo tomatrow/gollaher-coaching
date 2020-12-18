@@ -1,9 +1,7 @@
 <script>
     import { SvelteToast } from "@zerodevx/svelte-toast"
 
-    import { setContext } from "svelte"
-    import { onDestroy } from "svelte"
-    import location from "./location.js"
+    import { setContext, onMount } from "svelte"
     import { SETTINGS } from "./utility.js"
 
     import Header from "./app/Header.svelte"
@@ -13,16 +11,6 @@
     export let primaryNavigation
     export let secondaryNavigation
     export let settings
-
-    // scroll to the top of the page whenever we change routes
-    const unsubscribe = location.subscribe(() =>
-        window.scroll({
-            top: 0,
-            left: 0,
-            behavior: "smooth"
-        })
-    )
-    onDestroy(unsubscribe)
 
     setContext(SETTINGS, settings)
 

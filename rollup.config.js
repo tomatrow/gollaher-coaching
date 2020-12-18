@@ -5,8 +5,7 @@ import css from "rollup-plugin-css-only"
 import fs from "fs"
 import sveltePreprocess from "svelte-preprocess"
 import format from "./format.js"
-import { terser } from "rollup-plugin-terser";
-
+import { terser } from "rollup-plugin-terser"
 
 const production = !process.env.ROLLUP_WATCH
 
@@ -51,7 +50,7 @@ export default {
             dedupe: ["svelte"]
         }),
         commonjs(),
-         production && terser(),
+        production && terser()
     ],
     watch: {
         clearScreen: false

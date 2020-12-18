@@ -1,6 +1,7 @@
 <script>
     import { page, SETTINGS } from "../utility.js"
     import { getContext } from "svelte"
+    import location from "../location.js"
     import { fade } from "svelte/transition"
 
     import NavBar from "./NavBar.svelte"
@@ -22,7 +23,7 @@
 
     const settings = getContext(SETTINGS)
 
-    $: isHome = $page.collection.fullUrl == "/"
+    $: isHome = $location == "/" // need to chop off fragments
     $: percent = getPercent(y)
     $: critical = percent >= 1
 </script>
