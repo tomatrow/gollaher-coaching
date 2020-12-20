@@ -56,7 +56,7 @@
         <NavBar id="navbar" {navigation} hasLogo={false} />
 
         {#if isHome}
-            <Section class="anchor" id="about">
+            <Section id="about">
                 <ProfileBlurb
                     title={settings.home.headerProfileBlurb.title}
                     src={settings.home.headerProfileBlurb.src}
