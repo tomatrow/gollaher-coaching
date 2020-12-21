@@ -81,9 +81,9 @@
         <Title title={collections.testimonials.title} />
         <Testimonials items={collections.testimonials.items} />
     </Section>
-    <!-- <Section>
-            <Instagram />
-        </Section> -->
+    <Section>
+        <Instagram />
+    </Section>
 </Bar>
 <Rule />
 
