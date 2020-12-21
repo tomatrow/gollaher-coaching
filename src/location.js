@@ -30,11 +30,15 @@ export function back() {
 }
 
 window.addEventListener("click", event => {
-    const anchor = event.target.closest("a")
-    if (anchor?.href === undefined) return
+    const link = event.target.closest("a")?.href
+    if (link === undefined) return
+
+    // only intercept local links
+    const { origin } = window.location
+    if (new URL(link, origin).origin !== origin) return
 
     event.preventDefault()
-    navigate(anchor.href)
+    navigate(link)
 })
 
 const ANCHOR_REGEX = /^#[^ ]+$/
