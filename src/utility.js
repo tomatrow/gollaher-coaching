@@ -1,6 +1,7 @@
 import { writable, get } from "svelte/store"
 import { toast } from "@zerodevx/svelte-toast"
 import { book, subscribe } from "./api.js"
+import { sendBookEvent, sendSubscribeEvent } from "./analytics.js"
 
 // key for settings
 export const SETTINGS = {}
@@ -26,6 +27,7 @@ export async function onSubscribe() {
     const hide = show("Sending...")
     try {
         await subscribe(get(email))
+        sendSubscribeEvent(get(email))
         hide()
         toast.push("Thanks for subscribing!")
     } catch (error) {
@@ -39,6 +41,7 @@ export async function onBook() {
     const hide = show("Sending...")
     try {
         await book(get(email), get(name), get(phone))
+        sendBookEvent(get(email))
         hide()
         toast.push("Thanks for booking!")
     } catch (error) {

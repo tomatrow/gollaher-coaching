@@ -4,6 +4,7 @@
     import { setContext, onMount } from "svelte"
     import { SETTINGS } from "./utility.js"
 
+    import Head from "./app/Head.svelte"
     import Header from "./app/Header.svelte"
     import Footer from "./app/Footer.svelte"
     import Main from "./app/Main.svelte"
@@ -189,6 +190,10 @@
         font-family: "Jonney Fever";
     }
 
+    .word-space-3 {
+        word-spacing: 0.75rem;
+    }
+
     .button {
         border: double 0.125rem transparent;
         border-radius: 5rem;
@@ -203,6 +208,7 @@
     }
 </style>
 
+<Head />
 <div class="colors">
     <SvelteToast />
 </div>

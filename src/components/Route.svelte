@@ -4,11 +4,11 @@
     import location, { navigate, noMatch, hash, scrollToId } from "../location.js"
 
     import { tick } from "svelte"
-    import { load } from "../utility.js"
 
     export let path
     export let component = undefined
     export let redirect = undefined
+    export let resource = () => Promise.resolve()
 
     let promise
 
@@ -19,7 +19,7 @@
         if (params !== null) {
             $noMatch = false
             if (redirect) navigate(redirect, true)
-            promise = load($location)
+            promise = resource(params)
         }
     }
 
@@ -27,8 +27,8 @@
 </script>
 
 {#if params !== null}
-    {#await promise then data}
-        <div transition:fade>
+    <div transition:fade>
+        {#await promise then data}
             {#if component}
                 <svelte:component
                     this={component}
@@ -37,8 +37,8 @@
             {:else}
                 <slot router={{ params, data, path: $location }} />
             {/if}
-        </div>
-    {:catch}
-        <p class="text-white">Error</p>
-    {/await}
+        {:catch}
+            <p class="text-white">Error</p>
+        {/await}
+    </div>
 {/if}

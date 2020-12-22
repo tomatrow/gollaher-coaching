@@ -8,11 +8,13 @@
     import Resources from "./Resources.svelte"
     import Instagram from "./Instagram.svelte"
     import Testimonials from "./Testimonials.svelte"
+    import MoreLink from "./MoreLink.svelte"
 
     import Title from "./Title.svelte"
 
     import Booking from "../../components/Booking.svelte"
     import Section from "../../components/Section.svelte"
+    // import Link from "../../components/Link.svelte"
     import Bar from "./Bar.svelte"
 
     import Rule from "../../components/Rule.svelte"
@@ -80,6 +82,7 @@
     <Section class="flex items-center flex-col">
         <Title title={collections.testimonials.title} />
         <Testimonials items={collections.testimonials.items} />
+        <MoreLink href={collections.testimonials.fullUrl}>Show More</MoreLink>
     </Section>
     <Section>
         <Instagram />

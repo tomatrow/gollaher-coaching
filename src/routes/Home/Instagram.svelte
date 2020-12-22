@@ -5,6 +5,8 @@
     import { onMount } from "svelte"
 
     onMount(async () => {
+        if ($feed.data.length) return
+
         const url = new URL("https://graph.instagram.com/me/media")
         url.search = new URLSearchParams({
             fields: "caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username",

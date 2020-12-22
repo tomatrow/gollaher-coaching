@@ -41,7 +41,6 @@ window.addEventListener("click", event => {
     navigate(link)
 })
 
-const ANCHOR_REGEX = /^#[^ ]+$/
 const OFFSET_HEIGHT_PX = 100
 
 /**

@@ -5,6 +5,7 @@
     import Title from "./Title.svelte"
     import Card from "./Card.svelte"
     import Link from "../../components/Link.svelte"
+    import MoreLink from "./MoreLink.svelte"
 
     const settings = getContext(SETTINGS)
 
@@ -35,12 +36,5 @@
             </Card>
         {/each}
     </div>
-    <Link href={collection.fullUrl} class="flex items-center justify-center mt-4">
-        <span
-            class="font-jonney-fever uppercase text-3xl">{settings.home.blogPosts.showMoreTitle}</span>
-        <svg viewBox="0 0 100 100" fill="white" class="h-12">
-            <polygon points="25,25 25,75 65,50" />
-            <polygon points="50,25 50,75 90,50" />
-        </svg>
-    </Link>
+    <MoreLink href={collection.fullUrl}>{settings.home.blogPosts.showMoreTitle}</MoreLink>
 </Section>

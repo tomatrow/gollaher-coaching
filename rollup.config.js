@@ -3,6 +3,7 @@ import commonjs from "@rollup/plugin-commonjs"
 import resolve from "@rollup/plugin-node-resolve"
 import css from "rollup-plugin-css-only"
 import fs from "fs"
+import replace from "@rollup/plugin-replace"
 import sveltePreprocess from "svelte-preprocess"
 import format from "./format.js"
 import { terser } from "rollup-plugin-terser"
@@ -19,6 +20,9 @@ export default {
     },
     plugins: [
         format({ exclude: ["node_modules/**", "**/*.css"] }), // from zen
+        replace({
+            GTM_ID: JSON.stringify(process.env.GTM_ID)
+        }),
         svelte({
             compilerOptions: {
                 // enable run-time checks when not in production

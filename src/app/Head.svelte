@@ -1,0 +1,42 @@
+<script>
+    import Meta from "svelte-meta"
+    import { page } from "../utility.js"
+    import { sendPageView } from "../analytics.js"
+    import location from "../location.js"
+
+    let meta = {}
+    $: {
+        const object = $page.item ?? $page.collection
+        meta = {
+            title: object.title,
+            description: object.description,
+            image: object.assetUrl,
+            url: new URL(object.fullUrl, $page.website.baseUrl).href,
+            logoUrl: $page.website.logoImageUrl
+        }
+
+        if (object.assetUrl) meta.image = object.assetUrl
+
+        if (meta.logoUrl?.startsWith("//")) meta.logoUrl = "https:" + meta.logoUrl
+    }
+
+    $: {
+        sendPageView($location)
+    }
+</script>
+
+<Meta {...meta} />
+<svelte:head>
+    <script>
+        ;(function (w, d, s, l, i) {
+            w[l] = w[l] || []
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" })
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : ""
+            j.async = true
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl
+            f.parentNode.insertBefore(j, f)
+        })(window, document, "script", "dataLayer", GTM_ID)
+    </script>
+</svelte:head>
