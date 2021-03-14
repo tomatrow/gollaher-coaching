@@ -9,12 +9,14 @@
     import Instagram from "./Instagram.svelte"
     import Testimonials from "./Testimonials.svelte"
     import MoreLink from "./MoreLink.svelte"
+    import BlogPosts from "./BlogPosts.svelte"
+    import Quotes from "./Quotes.svelte"
 
     import Title from "./Title.svelte"
 
     import Booking from "../../components/Booking.svelte"
     import Section from "../../components/Section.svelte"
-    // import Link from "../../components/Link.svelte"
+
     import Bar from "./Bar.svelte"
 
     import Rule from "../../components/Rule.svelte"
@@ -31,7 +33,8 @@
         services: findCollection("/services"),
         packages: findCollection("/packages"),
         testimonials: findCollection("/testimonials"),
-        quotes: findCollection("/quotes")
+        quotes: findCollection("/quotes"),
+        blog: findCollection("/blog")
     }
 </script>
 
@@ -84,25 +87,19 @@
         <Testimonials items={collections.testimonials.items} />
         <MoreLink href={collections.testimonials.fullUrl}>Show More</MoreLink>
     </Section>
-    <Section>
+    <!-- <Section>
         <Instagram />
-    </Section>
+    </Section> -->
 </Bar>
 <Rule />
 
 <!-- Quotes -->
-<Bar class="bg-black text-white font-bold">
-    <Section class="text-center">
-        <div class="text-3xl">
-            {@html collections.quotes.items[0].excerpt}
-        </div>
-        <h3 class="font-bauhaus uppercase text-xl">{collections.quotes.items[0].title}</h3>
-    </Section>
-</Bar>
+<Quotes collection={collections.quotes} />
 <Rule />
 
-<!-- Contact -->
+<!-- Contact / Blog Posts -->
 <Bar id="contact" style="background-image: url(/assets/bg_scan_lines.png);">
+    <BlogPosts class="mb-32" collection={collections.blog} />
     <Section class="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row px-4 text-white">
         <div>
             <h3 class="font-jonney-fever text-center sm:text-left uppercase text-3xl">

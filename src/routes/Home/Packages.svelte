@@ -11,13 +11,13 @@
 </style>
 
 <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-    {#each items as { excerpt, title }, i}
+    {#each items as { excerpt, customContent: { name, price } }, i}
         <Card class="relative px-4 rounded text-white">
-            <div class="py-4 sm:px-8">
+            <div class="py-4">
                 <div>
-                    <h3 class="font-bauhaus text-center uppercase text-xl">{title}</h3>
+                    <h3 class="font-bauhaus text-center uppercase text-xl">{name}<br />{price}</h3>
                 </div>
-                <div class="font-secondary text-center font-bold">
+                <div class="font-secondary sm:px-4 text-center font-bold">
                     {@html excerpt}
                 </div>
             </div>

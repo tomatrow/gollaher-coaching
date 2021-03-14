@@ -3,6 +3,7 @@
 
     import { setContext, onMount } from "svelte"
     import { SETTINGS } from "./utility.js"
+    import location from "./location.js"
 
     import Head from "./app/Head.svelte"
     import Header from "./app/Header.svelte"

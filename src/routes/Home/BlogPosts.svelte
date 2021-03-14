@@ -10,12 +10,15 @@
     const settings = getContext(SETTINGS)
 
     export let collection
+
+    let clazz = ""
+    export { clazz as class }
 </script>
 
-<Section class="flex items-center flex-col">
+<Section class="{clazz} flex items-center flex-col">
     <Title href={collection.href} title={collection.title} />
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {#each collection.items as { assetUrl, fullUrl, excerpt, title }}
+        {#each collection.items.slice(0, 3) as { assetUrl, fullUrl, excerpt, title }}
             <Card class="flex flex-col justify-between w-full">
                 <div>
                     <Link href={fullUrl}>
@@ -23,7 +26,9 @@
                     </Link>
                     <div class="p-2">
                         <Link href={fullUrl}>
-                            <h3 class="font-bauhaus text-center uppercase text-xl">{title}</h3>
+                            <h3 class="font-bauhaus text-center uppercase text-xl">
+                                {@html title}
+                            </h3>
                         </Link>
                         {@html excerpt}
                     </div>

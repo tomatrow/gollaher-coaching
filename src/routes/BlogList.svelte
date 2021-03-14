@@ -9,9 +9,13 @@
 {#await load(router.path) then page}
     <Bar class="bg-black">
         <Section class="space-y-8 flex flex-col">
-            <h1 class="font-lazer text-c text-center text-5xl">{page.collection.title}</h1>
+            <h1 class="font-lazer word-space-3 text-c text-center text-5xl">
+                {@html page.collection.title}
+            </h1>
             {#each page.items as { fullUrl, title }}
-                <Link class="font-bauhaus text-center uppercase" href={fullUrl}>{title}</Link>
+                <Link class="font-bauhaus text-center uppercase" href={fullUrl}>
+                    {@html title}
+                </Link>
             {/each}
         </Section>
     </Bar>
