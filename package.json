@@ -8,7 +8,8 @@
         "deploy": "./utility/deploy.fish",
         "server": "squarespace-server $SQS_SITE_URL --auth",
         "tailwind": "./node_modules/.bin/tailwind build src/App.svelte -o assets/tailwind.css",
-        "start": "nova .; open $SQS_LOCAL_URL"
+        "start": "nova .; open $SQS_LOCAL_URL",
+        "generate-sitemap": "node ~/src/playwright-sitemap 'https://www.gollahercoaching.com' > assets/sitemap.xml && prettier --write assets/sitemap.xml --parser html "
     },
     "devDependencies": {
         "@beyonk/svelte-google-analytics": "^2.0.0",
