@@ -6,18 +6,22 @@
 
     onMount(async () => {
         if ($feed.data.length) return
+        try {
+            const url = new URL("https://graph.instagram.com/me/media")
+            url.search = new URLSearchParams({
+                fields:
+                    "caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username",
+                limit: 6,
+                access_token: await instagram()
+            }).toString()
 
-        const url = new URL("https://graph.instagram.com/me/media")
-        url.search = new URLSearchParams({
-            fields: "caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username",
-            limit: 6,
-            access_token: await instagram()
-        }).toString()
+            const response = await fetch(url)
+            const json = await response.json()
 
-        const response = await fetch(url)
-        const json = await response.json()
-
-        feed.set(json)
+            feed.set(json)
+        } catch (error) {
+            console.error(error)
+        }
     })
 </script>
 

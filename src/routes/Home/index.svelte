@@ -87,9 +87,9 @@
         <Testimonials items={collections.testimonials.items} />
         <MoreLink href={collections.testimonials.fullUrl}>Show More</MoreLink>
     </Section>
-    <!-- <Section>
+    <Section>
         <Instagram />
-    </Section> -->
+    </Section>
 </Bar>
 <Rule />
 
