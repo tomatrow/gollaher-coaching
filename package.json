@@ -17,6 +17,8 @@
         "@rollup/plugin-commonjs": "^17.0.0",
         "@rollup/plugin-node-resolve": "^11.0.0",
         "@rollup/plugin-replace": "^2.3.4",
+        "@squarespace/server": "^1.8.2",
+        "@squarespace/toolbelt": "^0.12.1",
         "@sveltejs/svelte-scroller": "^2.0.6",
         "@zerodevx/svelte-toast": "^0.1.4",
         "autoprefixer": "^10.0.4",
