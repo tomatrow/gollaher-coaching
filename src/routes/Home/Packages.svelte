@@ -1,7 +1,6 @@
 <script>
     import Card from "./Card.svelte"
     export let items
-    console.log({ items })
 </script>
 
 <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
